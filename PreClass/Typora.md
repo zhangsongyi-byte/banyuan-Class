@@ -12,6 +12,11 @@
 降低标题级别：⌘- (command + -)
 
 表格：⌥⌘T (option + command + T)
+
+cmd+回车：生成新的行
+
+cmd+shift+del：删除行
+
 代码块：⌥⌘C (option + command + C)
 公式块：⌥⌘B (option + command + B)
 
