@@ -1,0 +1,42 @@
+/* .parent{
+    width: 500px;
+    height: 500px;
+} */
+
+/* .parent .child{
+    background-color: yellow;
+} */
+
+/* .parent>div>h1{
+    background-color: red;
+} */
+
+/* h1.child{
+    background-color: bisque;
+}
+
+div.parent{
+    background-color: aquamarine;
+} */
+
+/* div,h1{
+    background-color: red;
+} */
+body{
+    height: 200vh;
+}
+
+.parent{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    background-color: rebeccapurple;
+}
+
+.child{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    right: 30px;
+    background-color:yellow;
+}
