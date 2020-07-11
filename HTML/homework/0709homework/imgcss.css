@@ -17,8 +17,6 @@ img{
 .after{
     font-size: 16px;
     font-style: normal;
-    font-family: FontAwesome;
-    z-index: 10;
     color: rgb(100, 100, 100);
     position: absolute;
     top: 5px;

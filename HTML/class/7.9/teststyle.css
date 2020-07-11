@@ -36,7 +36,8 @@ body{
 .child{
     width: 100px;
     height: 100px;
-    position: fixed;
+    position: absolute;
     right: 30px;
     background-color:yellow;
 }
+input[type='text']

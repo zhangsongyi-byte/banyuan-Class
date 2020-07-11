@@ -1,0 +1,151 @@
+/* .div1{
+    width: 100px;
+    height: 100px;
+    background-color: rosybrown;
+    float: right;
+}
+
+.div2{
+    width: 200px;
+    height: 200px;
+    background-color: royalblue;
+}
+
+.div3{
+    width: 400px;
+    height: 400px;
+    background-color: slategray;
+} */
+
+/* .div1{
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+    float: left; 
+    overflow: ;
+} */
+
+/* .div2{
+    width: 300px;
+    height: 300px;
+    background-color: slategray;
+    float:left;
+    margin-left: -280px;
+} */
+
+/* .father{
+    width: 500px;
+    height: 500px;
+    background-color: springgreen;
+    position: relative;
+}
+
+.child{
+    width: 100px;
+    height: 100px;
+    background-color:red;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 50%;
+} */
+
+/* .div1{
+    width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: springgreen;
+} */
+
+/* .div2{
+    width: 300px;
+    height: 500px;
+    float: left;
+    background-color: black;
+}
+
+.div3{
+    width: 400px;
+    height: 500px;
+    float: left;
+    background-color: red;
+}
+
+.div4{
+    width: 300px;
+    height: 500px;
+    float: left;
+    background-color: pink;
+} */
+
+/* .left{
+    width: 300px;
+    height: 500px;
+    float: left;
+    background-color:black;
+}
+
+.middle{
+    height: 500px;
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color: rebeccapurple;
+}
+
+.right{
+    width: 300px;
+    height: 500px;
+    float: right;
+    background-color: pink;
+} */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.header{
+    height: 100px;
+    background-color: rosybrown;
+}
+
+.parent{
+    height: 500px;
+    background-color: royalblue;
+    padding: 0 215px 0 115px;  /*为了使#center摆正,左右padding分别等于左右盒子的宽,可以结合左右盒子相对定位的left调整间距*/
+}
+
+.center{
+    float: left;
+    width: 100%;
+    height: 500px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    background-color: blueviolet;
+}
+
+.left{
+    margin-left: -100%;
+    position: relative;
+    left: -115px;
+    float: left;
+    width: 100px;
+    height: 500px;
+    background-color: chartreuse;
+    opacity: 0.5;
+}
+
+.right{
+    position: relative;
+    left: 215px;
+    float: right;
+    width: 200px;
+    height: 500px;
+    background-color: pink;
+    margin-left: -100%;
+}
+
+.footer{
+    height: 100px;
+    background-color: darkblue;
+}
