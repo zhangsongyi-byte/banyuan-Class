@@ -1,0 +1,31 @@
+.container{
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.child{
+    width: 30px;
+    height: 30px;
+    background-color: gray;
+    animation: Zmove linear 2s infinite alternate forwards;
+}
+
+/* 每次移动的坐标都是以一开始的坐标为基准，而不是以上一次的坐标为基准 */
+@keyframes Zmove{
+    0%{}
+
+    33%{
+        transform: translateX(170px);
+    }
+    66%{
+        transform: translate(0,170px);
+    }
+    100%{
+        transform: translate(170px,170px);
+    }
+}
+
+
