@@ -1,0 +1,27 @@
+.container{
+    background-image: url(letter.png);
+    width: 100px;
+    height: 100px;
+    background-position: -452px -356px;
+    display: inline-block;
+}
+.div{
+    background-image: url(letter.png);
+    width: 100px;
+    height: 100px;
+    background-position: -1025px -218px;
+    display: inline-block;
+
+}
+.name{
+    background-image: url(letter.png);
+    width: 100px;
+    height: 100px;
+    background-position: -321px -356px;
+    display: inline-block;
+
+}
+
+.pic{
+    font-size: 0;
+}

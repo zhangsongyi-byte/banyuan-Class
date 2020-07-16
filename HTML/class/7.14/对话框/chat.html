@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .parent{
+           width: 200px;
+           height: 30px;
+           margin-left: 70px;
+           background-color: darkturquoise;
+           position: relative;
+           /* overflow: hidden; */
+       }
+        .container{
+            /* width: 100px;
+            height: 100px; */
+            /* margin-top: 20px; */
+            width: 0;
+            position: absolute;
+            top: 10px;
+            margin-left: -12px;
+            /* background-color: rosybrown; */
+            border-color: transparent transparent darkturquoise transparent;
+            border-style: solid;
+            border-width: 0px 8px 8px 8px;
+            transform: rotate(-90deg);
+
+        }
+        
+        .pic{
+            width: 55px;
+            height: 55px;
+            background-color: black;
+            position: relative;
+            top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="pic"></div>
+    <div class="parent">
+    <div class="container"></div>
+</div>
+</div>
+</body>
+</html>

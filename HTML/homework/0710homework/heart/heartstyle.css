@@ -12,7 +12,7 @@ body{
     margin: 0 auto;
     margin-top: 500px;
     position: relative;
-    animation: heartbeat 0.5s infinite ;
+    animation: heartbeat 0.5s infinite alternate;
 }
 
 .child_left{
