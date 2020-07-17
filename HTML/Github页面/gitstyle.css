@@ -136,7 +136,7 @@ a{
 }
 
 .center-body{
-    width: auto;
+    /* width: auto; */
     height: 598px;
     margin: 0 auto;
 }
