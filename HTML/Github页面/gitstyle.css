@@ -1,14 +1,8 @@
 *{
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
-    scrolling:no;
 }
 
-body{
-    scrolling:no;
-    /* border-bottom: 1px solid #e1e4e8; */
-}
 
 .header{
     /* width: 100%; */
@@ -304,11 +298,11 @@ a{
 }
 
 .self-repositories{
-    width: 252px;
-    height: 29px;
+    
     margin: 20px 19px;
     padding: 7px 5px;
-    
+    line-height: 2;
+    font-size: 12px;
     border-bottom: 1px solid gainsboro;
 }
 
