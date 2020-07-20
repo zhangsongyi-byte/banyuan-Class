@@ -126,13 +126,14 @@ a{
     width: 100%;
     /* height: 100vh; */
     float: left;
-    /* background-color: paleturquoise; */
 }
 .center-inbox{
     height: 100vh;
     /* border: 1px solid #e1e4e8; */
     margin: 16px 273px 0 340px;  /*关键!!!左右边界等于左右盒子的宽度,多出来的为盒子间隔*/
     padding: 0 16px 1px 16px;
+    /* background-color: #e1e4e8; */
+
 }
 
 .center-body{
@@ -246,7 +247,7 @@ a{
 
 .footer-ul{
     float: right;
-    margin-right: 60px;
+    margin-right: 50px;
 }
 
 .ul-right{
@@ -397,9 +398,19 @@ a{
 
 .right-bottom{
     font-size: 12px;
-    color: #586069;
+    /* color: #586069; */
     padding-bottom: 5px;
 }
+
+.right-bottom-a{
+    color: #586069;
+    /* font-size: 12px; */
+}
+
+.right-bottom-a:hover{
+    color: #0366d6;
+}
+
 
 .right-icon{
     font-size: 12px;
