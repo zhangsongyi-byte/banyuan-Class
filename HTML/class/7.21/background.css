@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.background{
+    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585723706887&di=adba44e189de82f2c7cad6e966e57e79&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2Fdd49d7fc7a1657002082be59cade09aab60dc9a3.jpg);
+    height: 200vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.A{
+    font-size: 40px;
+    font-weight: 500;
+    font-family: monospace;
+    color: white;
+}
+
+.clap{
+    font-size: 12px;
+    font-family: sans-serif;
+    color: rgb(255,);
+    color: yellow;
+}
+
+
+.clap-container{
+    width: 100px;
+    /* height: 65px; */
+    border: 3px solid black;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    /* position: relative; */
+    background-color: rgb(0,0,0 ,0.4);
+}
+
+.s-container{
+    margin-right: 40px;
+}
+
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 1500px;
+    position: fixed;
+}
+
