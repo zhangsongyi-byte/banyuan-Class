@@ -43,11 +43,11 @@
         // console.log(sum);
 
 
-            // var num=1;
-            // for(var i=0;i<10;i++){
-            //     num=(num+1)*2;
-            // }
-            // console.log(parseInt(num));
+            var num=1;
+            for(var i=1;i<10;i++){
+                num=(num+1)*2;
+            }
+            console.log(parseInt(num));
 
 
             // var count=0;
@@ -60,37 +60,37 @@
             // console.log(count);
 
 
-                var num=Number(prompt("请输入一个数：")) ;
-                var count=0;
-                var temp=num;
-                if(num===0||num===1){
-                    console.log("既不是质数也不是合数");
-                }else if(num===2){
-                    console.log("2是质数");
-                }else{
-                    for(var i=2;i<num;i++){
-                    if(num%i===0){
-                        count++;
-                    }
-                }
-                if(count===0){
-                    console.log("是质数");
-                }else{
-                    console.log("不是质数");
+                // var num=Number(prompt("请输入一个数：")) ;
+                // var count=0;
+                // var temp=num;
+                // if(num===0||num===1){
+                //     console.log("既不是质数也不是合数");
+                // }else if(num===2){
+                //     console.log("2是质数");
+                // }else{
+                //     for(var i=2;i<num;i++){
+                //     if(num%i===0){
+                //         count++;
+                //     }
+                // }
+                // if(count===0){
+                //     console.log("是质数");
+                // }else{
+                //     console.log("不是质数");
                 
 
-                var str='';
-                for(var j=2;j<=num;j++){
-                    while(num%j===0){
-                        num/=j;
-                        str=str+j+'*';
-                    }
-                }
-                var newstr=str.substring(0,str.length-1);
-                console.log(temp+"="+newstr);
+                // var str='';
+                // for(var j=2;j<=num;j++){
+                //     while(num%j===0){
+                //         num/=j;
+                //         str=str+j+'*';
+                //     }
+                // }
+                // var newstr=str.substring(0,str.length-1);
+                // console.log(temp+"="+newstr);
 
-                }
-                }
+                // }
+                // }
                 
                 
 
