@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var obj={
+    //     name:'zhang',
+    //     height:180,
+    //     handsome:80,
+    //     rich:100,
+    //     students:{
+    //         name:'song',
+    //         age:18
+    //     }
+    // }
+    // delete obj.name;
+    // console.log(obj);
+
+
+    // var obj1={a:10};
+    // var obj2=obj1;
+    // obj1.a=8;
+    // console.log('obj1',obj1);
+    // console.log('obj2',obj2);
+    // console.log(obj1===obj2);//结果为true，因为比较的是obj1和obj2的地址
+    // var obj3={a:8};
+    // console.log(obj1===obj3);//结果为false，因为obj1和obj3的数值虽然一样，但是内存地址不同
+
+    //     function main(str){
+
+    //     str = str + '';
+
+    //     console.log(typeof str);
+    //     console.log(str.length);
+
+    // }
+
+    // main('hello');
+
+
+
+
+    //  function main(){
+
+    //         var a = function (){
+
+    //             console.log(11111);
+    //         }
+
+    //         return a;
+    //     }
+
+
+    //     main()();//输出结果为11111
+
+
+
+
+    //     function main(){
+
+    //     for(var i = 0; i<10 ; i++){
+
+    //         console.log('i ===>',i);
+
+    //         for(var j = 0; j<10 ; j++){
+
+    //             console.log('j ====>',j);
+
+    //             if(j === 2){
+    //                 // break ;
+    //                 return;
+    //             }
+
+    //             // console.log(' ========== ');
+    //         } 
+    //     }
+
+    //     console.log(' ========== ');
+    // }
+
+
+    // var a = 123;
+    // function main() {
+    //     console.log(a);
+    // }
+    // main()//123
+
+
+    // var a = 123;
+    // function main() {
+
+    //     var a;
+
+    //     console.log(a);
+
+    //     a = 1234;
+    // }
+
+    // main()
+    // console.log(a);//undefined;123
+
+
+    // var a = 123;
+    // function main() {
+
+    //     console.log(a);
+
+    //     a = 1234;
+    // }
+
+    // main()//123
+    // console.log(a);//1234,a=1234是将外层的a的值修改了,因为函数中并没有对a的声明定义
+
+
+    // var a = 123;
+    // function main(a) {
+    //     console.log(a);
+
+    //     a = 1234;
+    // }
+
+    // main();//undefined
+    // console.log(a);//123
+
+    // var a = 123;
+    // function main(a) {
+    //     console.log(a);
+
+    //     a = 1234;
+    // }
+
+    // main(123);//123
+
+    // console.log(a);//123,调用的是外部的a，跟函数的参数a没有关系
+
+    // var array=[];
+    // for (var i = 0; i < 6; i++) {
+
+    //     (function (ii) {
+
+    //         var ii = i;
+
+    //         array[i] = function () {
+    //             console.log(ii) // 0、1、2、3、4、5
+    //         }
+    //     })(i)
+
+    // }
+
+    // array[1]();
+
+    // array[2]();
+
+    // for(var i=0; i<6; i++){
+    //     (function a(ii){
+
+    //         array[i] = function(){
+    //             console.log(ii) // 0、1、2、3、4、5
+    //         }
+    //     })(i)
+    // }
+
+    // a(0);
+
+
+
+    //this
+    // var foo='foo'
+
+    // var myObject={
+    //     foo:"bar",
+    //     func:function(){
+    //         var self =this;
+    //         console.log(this.foo);
+    //         console.log(self.foo);
+    //         (function(){
+    //             console.log(this.foo);
+    //             console.log(self.foo);
+    //         }());//全局调用这个函数，所以this.foo指代的是全局的foo
+    //     }
+    // };
+
+    // var func1=myObject.func;
+    // myObject.func();
+    // console.log("=========>");
+    // func1();
+
+
+
+    //new
+    function Person(name, age) {
+
+        console.log(this);
+
+        this.name = name;
+        this.age = age;
+
+    }
+
+    var p1 = new Person('lucy', '22');
+
+    console.log(p1);
+
+    console.log(p1 instanceof Person)
+
+</script>
+
+</html>
