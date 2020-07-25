@@ -22,67 +22,67 @@
     // surplus();
 
 
-    // var count1 = 0;
-    // var count2 = 0;
-    // var count3 = 0;
-    // var count4 = 0;
+    var count1 = 0;
+    var count2 = 0;
+    var count3 = 0;
+    var count4 = 0;
 
-    // function stringJudge(str) {
-    //     for (var i = 0; i < str.length - 1; i++) {
-    //         var temp = str.charAt(i);
-    //         // console.log(temp);
-    //         if (temp >= 'a' && temp <= 'z') {
-    //             count1 = 1;
-    //         }
-    //         if (temp >= 'A' && temp <= 'Z') {
-    //             count2 = 1;
-    //         }
-    //         if (temp === '$') {
-    //             count3 = 1;
-    //         }
-    //         if (temp === '_') {
-    //             count4 = 1;
-    //         }
-    //     }
-
-    //     if (count1 === 0) {
-    //         console.log("没有小写字母");
-    //     }
-    //     if (count2 === 0) {
-    //         console.log("没有大写字母");
-    //     }
-    //     if (count3 === 0) {
-    //         console.log("没有$");
-    //     }
-    //     if (count4 === 0) {
-    //         console.log("没有_");
-    //     }
-    // }
-    // stringJudge('waAizhongguo');
-
-    var count1 = count2 = count3 = 0;
-    var sum = 0;
-
-    function correct() {
-        for (var i = 0; i < 16; i++) {
-            var k1 = Math.random();
-            if (k1 <= 1 / 8) {
-                count1++;
-            } else {
-                for (var i = 0; i < 16 - count1; i++) {
-                    var k2 = Math.random();
-                    if (k2 <= 0.85) {
-                        count2++;
-                    }
-                }
-                var count3 = 16 - count1 - count2;
-
+    function stringJudge(str) {
+        for (var i = 0; i < str.length - 1; i++) {
+            var temp = str.charAt(i);
+            // console.log(temp);
+            if (temp >= 'a' && temp <= 'z') {
+                count1 = 1;
             }
-            var sum = 16 + 16 - count1 + count3;
-            console.log(sum);
+            if (temp >= 'A' && temp <= 'Z') {
+                count2 = 1;
+            }
+            if (temp === '$') {
+                count3 = 1;
+            }
+            if (temp === '_') {
+                count4 = 1;
+            }
+        }
+
+        if (count1 === 0) {
+            console.log("没有小写字母");
+        }
+        if (count2 === 0) {
+            console.log("没有大写字母");
+        }
+        if (count3 === 0) {
+            console.log("没有$");
+        }
+        if (count4 === 0) {
+            console.log("没有_");
         }
     }
-    correct();
+    stringJudge('waAizhongguo');
+
+    // var count1 = count2 = count3 = 0;
+    // var sum = 0;
+
+    // function correct() {
+    //     for (var i = 0; i < 16; i++) {
+    //         var k1 = Math.random();
+    //         if (k1 <= 1 / 8) {
+    //             count1++;
+    //         } else {
+    //             for (var i = 0; i < 16 - count1; i++) {
+    //                 var k2 = Math.random();
+    //                 if (k2 <= 0.85) {
+    //                     count2++;
+    //                 }
+    //             }
+    //             var count3 = 16 - count1 - count2;
+
+    //         }
+    //         var sum = 16 + 16 - count1 + count3;
+    //         console.log(sum);
+    //     }
+    // }
+    // correct();
 </script>
 
 </html>

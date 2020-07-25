@@ -141,6 +141,51 @@
 
     // console.log(a);//123,调用的是外部的a，跟函数的参数a没有关系
 
+    //for没有单独的块作用域
+    var array = [];
+    // var a =[1,2,3,4,5,6];
+
+    // console.log(a[4])
+    // 为什么？
+
+    // for(var i=0; i<6; i++){
+
+    //     // var j = i;
+
+    //     array[i] = function(){
+    //         console.log(i) 
+    //     }
+    // }
+
+    // var i = 0;
+
+    // array[i] = function(){
+
+    //     console.log(i);
+    // }
+
+    // i++;
+
+    // array[i] = function(){
+
+    //     console.log(i);
+    // }
+
+    // i++;
+
+    // array[i] = function(){
+
+    //     console.log(i);
+    // }
+
+    // i++;
+
+    // array[i] = function(){
+
+    //     console.log(i);
+    // }
+
+
     // var array=[];
     // for (var i = 0; i < 6; i++) {
 
@@ -210,7 +255,6 @@
     console.log(p1);
 
     console.log(p1 instanceof Person)
-
 </script>
 
 </html>

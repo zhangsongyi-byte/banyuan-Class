@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var now = new Date;
+    // var bir = new Date(1998, 02, 02, 08, 50, 10); //在这里按照这个格式输入自己生日：年月日时分秒
+
+    // console.log(bir);
+    // console.log(now)
+    // var cha = now - bir;
+    // console.log(cha)
+    // var date = cha / 86400000;
+    // document.write('出生到现在你已经生活了' + parseInt(date) + '天零');
+    // var hours1 = (cha % 86400000) / 3600000;
+    // document.write(parseInt(hours1) + '小时');
+    // var minutes1 = (cha % 86400000 % 3600000) / 60000;
+    // document.write(parseInt(minutes1) + '分钟');
+
+
+    //字符串首字母大写
+    function string(str) {
+        if (typeof(str) === 'string') {
+            console.log(str.substring(0, 1).toUpperCase() + str.substring(1));
+        } else {
+            console.log('不是字符串');
+        }
+    }
+    string('hello');
+    string(123);
+
+
+    //将_后面的字母变为大写
+    var str = "_sss_kdh_ppp";
+
+    var newstr = str.split("_");
+    for (var i = 1; i < newstr.length; i++) {
+        newstr[0] = newstr[0] + newstr[i].slice(0, 1).toUpperCase() + newstr[i].slice(1);
+    }
+    console.log(newstr[0]);
+
+    //冒泡排序
+    var array = [9, 0, 5, 8, 1, 7];
+    function bubblesort() {
+        for (var i = 0; i < array.length - 1; i++) {
+            for (var j = 0; j < array.length - 1 - i; j++) {
+                if (array[j] > array[j + 1]) {
+                    var temp = array[j + 1];
+                    array[j + 1] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+    }
+    bubblesort();
+    console.log(array);
+</script>
+
+</html>
