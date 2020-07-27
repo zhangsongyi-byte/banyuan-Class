@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 800px;
+            height: 500px;
+            background-color: rgba(243, 240, 237, 0.219);
+            border: 2px solid gray;
+            margin: 0 auto;
+        }
+        
+        .title {
+            height: 120px;
+            width: 800px;
+            /* background-color: gray; */
+            border-bottom: 2px solid gray;
+        }
+        
+        .login-text {
+            text-align: center;
+            width: 700px;
+            height: 100px;
+            margin-top: 50px;
+        }
+        
+        .login-password {
+            text-align: center;
+            width: 700px;
+            height: 100px;
+            position: relative;
+            left: -23px;
+        }
+        
+        span {
+            color: gray;
+            font-size: 24px;
+        }
+        
+        input {
+            width: 400px;
+            height: 45px;
+            border: 2px solid darkgray;
+            font-size: 20px;
+            color: darkgray;
+        }
+        
+        button {
+            width: 100px;
+            height: 50px;
+            background-color: darksalmon;
+            color: white;
+            font-size: 24px;
+            font-weight: 300;
+            border: 0;
+            border-radius: 7px;
+        }
+        
+        p {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1 style="color: gray; line-height: 100px; margin-left: 50px;">表单</h1>
+        </div>
+        <form action="#" method="POST" name="loginform">
+            <div class="login-text">
+                <span>Your name:</span>
+                <input type="text" placeholder="Your full name" class="name">
+                <p class="pName">用户名要为字母，数字，下划线，以字母开头，长度在4-16位</p>
+            </div>
+            <div class="login-password">
+                <span>Your password:</span>
+                <input type="password" class="password">
+                <p class="pPwd">密码要8到15位，字母，数字或下划线字符</p>
+            </div>
+            <div style="text-align: center;">
+                <button class="click">Send</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+<script>
+    var user = document.getElementsByClassName('name')[0];
+    var pwd = document.getElementsByClassName('password')[0];
+    var patternName = /^([0-9a-zA-Z]|-|_){4,16}$/;
+    var patternPwd = /^([0-9a-zA-Z]|_){8,15}$/;
+    var pName = document.getElementsByClassName('pName')[0];
+    var pPwd = document.getElementsByClassName('pPwd')[0];
+
+    user.oninput = function() {
+        if (patternName.test(user.value) === true) {
+            pName.style.display = 'none';
+        } else {
+            pName.style.display = 'block';
+        }
+    }
+    pwd.oninput = function() {
+        if (patternPwd.test(pwd.value) === true) {
+            pPwd.style.display = 'none';
+        } else {
+            pPwd.style.display = 'block';
+        }
+    }
+    var btn = document.querySelector('button')
+    btn.onclick = function() {
+        if (patternPwd.test(user.value) == true && patternName.test(pwd.value) == false) {
+
+            user.value = '';
+            btn.disabled = 'none';
+
+        } else if (patternPwd.test(user.value) == false && patternName.test(pwd.value) == true) {
+
+            pwd.value = '';
+            btn.disabled = 'none';
+
+        } else if (patternPwd.test(user.value) == false && patternName.test(pwd.value) == false) {
+
+            user.value = '';
+            pwd.value = '';
+
+        } else {}
+    }
+</script>
+
+</html>

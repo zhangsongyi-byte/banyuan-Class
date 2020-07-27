@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            width: 100%;
+            height: 50px;
+            /* background-color: pink; */
+        }
+        
+        .ul1-li {
+            list-style: none;
+            float: left;
+            margin-left: 32px;
+            line-height: 50px;
+            font-size: 15px;
+        }
+        
+        .ul1-li1 {
+            list-style: none;
+            float: left;
+            line-height: 50px;
+            font-size: 15px;
+            margin-left: 25px;
+        }
+        
+        .ul2-li {
+            list-style: none;
+            float: right;
+            font-size: 15px;
+            line-height: 50px;
+            margin-right: 25px;
+        }
+        
+        .ul2-li1 {
+            list-style: none;
+            float: right;
+            line-height: 50px;
+            font-size: 15px;
+            margin-right: 25px;
+            /* margin-left: 25px; */
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .header a:link {
+            color: black;
+        }
+        
+        .header a:visited {
+            color: black;
+        }
+        
+        .header a:hover {
+            color: #315efb;
+        }
+        
+        #ul2-li-a:link {
+            color: red;
+        }
+        
+        #ul2-li-a:visited {
+            color: red;
+        }
+        
+        #ul2-li-a:hover {
+            color: #315efb;
+        }
+        
+        .select {
+            width: 70px;
+            height: 130px;
+            /* border: 2px solid gray; */
+            border-radius: 5px;
+            position: absolute;
+            right: 50px;
+            /* display: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <ul class="ul1">
+            <li class="ul1-li1"><a href="#">新闻</a></li>
+            <li class="ul1-li"><a href="#">hao123</a></li>
+            <li class="ul1-li"><a href="#">地图</a></li>
+            <li class="ul1-li"><a href="#">视频</a></li>
+            <li class="ul1-li"><a href="#">贴吧</a></li>
+            <li class="ul1-li"><a href="#">学术</a></li>
+            <li class="ul1-li"><a href="#">更多</a></li>
+        </ul>
+
+        <ul class="ul2">
+            <li class="ul2-li1"><button style="background-color: #315efb; color: white; border: 0; border-radius: 5px; width: 35px;">登录</button></li>
+            <li class="ul2-li ul2-li2"><a href="#">设置</a>
+                <div class="select">
+                    <a href="#">个人信息</a>
+                    <a href="#">设置信息</a>
+                    <a href="#">更改账户</a>
+                </div>
+            </li>
+            <li class="ul2-li"><a href="#" id="ul2-li-a">高考加油</a></li>
+        </ul>
+
+    </header>
+</body>
+<script>
+    var elem = document.getElementsByClassName('ul2-li2')[0];
+    var elem2 = document.getElementsByClassName('select')[0];
+    elem.onmouseover = function() {
+        elem2.style.display = 'block';
+        console.log('on');
+
+    }
+    elem.onmouseout = function() {
+        elem2.style.display = 'none';
+        console.log('leave');
+    }
+</script>
+
+</html>

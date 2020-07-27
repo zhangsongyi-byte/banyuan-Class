@@ -26,19 +26,19 @@
     // document.write(parseInt(minutes1) + '分钟');
 
 
-    //字符串首字母大写
-    function string(str) {
-        if (typeof(str) === 'string') {
-            console.log(str.substring(0, 1).toUpperCase() + str.substring(1));
-        } else {
-            console.log('不是字符串');
-        }
-    }
-    string('hello');
-    string(123);
+    // //字符串首字母大写
+    // function string(str) {
+    //     if (typeof(str) === 'string') {
+    //         console.log(str.substring(0, 1).toUpperCase() + str.substring(1));
+    //     } else {
+    //         console.log('不是字符串');
+    //     }
+    // }
+    // string('hello');
+    // string(123);
 
 
-    //将_后面的字母变为大写
+    // //将_后面的字母变为大写
     var str = "_sss_kdh_ppp";
 
     var newstr = str.split("_");
@@ -47,21 +47,25 @@
     }
     console.log(newstr[0]);
 
-    //冒泡排序
-    var array = [9, 0, 5, 8, 1, 7];
-    function bubblesort() {
-        for (var i = 0; i < array.length - 1; i++) {
-            for (var j = 0; j < array.length - 1 - i; j++) {
-                if (array[j] > array[j + 1]) {
-                    var temp = array[j + 1];
-                    array[j + 1] = array[j];
-                    array[j] = temp;
-                }
-            }
-        }
-    }
-    bubblesort();
-    console.log(array);
+    // //冒泡排序
+    // var array = [9, 0, 5, 8, 1, 7];
+    // function bubblesort() {
+    //     for (var i = 0; i < array.length - 1; i++) {
+    //         for (var j = 0; j < array.length - 1 - i; j++) {
+    //             if (array[j] > array[j + 1]) {
+    //                 var temp = array[j + 1];
+    //                 array[j + 1] = array[j];
+    //                 array[j] = temp;
+    //             }
+    //         }
+    //     }
+    // }
+    // bubblesort();
+    // console.log(array);
+
+
+    var str='hellowa'
+    console.log(str.slice(2));
 </script>
 
 </html>

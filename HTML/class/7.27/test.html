@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 100px;
+            height: 20px;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .container {
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+
+        <div class="test" id="test">
+
+            <div class='test' id='test-wirte'></div>
+            <!-- 查看节点 -->
+            <input type="text" id="input" value="123222222" class='input-test'>
+
+            <div id='main'>
+                <div class="content red"></div>
+
+                <div class="content"></div>
+
+                <div class="content red"></div>
+            </div>
+
+            <div id="parent">
+            </div>
+        </div>
+    </div>
+
+    <div class="container"></div>
+
+</body>
+<script>
+    //按照指定的周期不停地调用函数，直到窗口被关闭
+    // setInterval(function() {
+    //     console.log(1);
+    // }, 5000);
+
+    //超时，每过五秒钟调用一次
+    // setTimeout(function() {
+    //     console.log(1);
+    // }, 5000);
+
+
+
+    // var ele = document.getElementById('test'); //通过id名获取对象
+
+    // var eles1 = document.getElementsByClassName('test'); //通过类名获取对象
+
+    // var eles2 = document.getElementsByTagName('div'); //通过标签名获取对象
+
+    // console.log(eles2);
+
+    // var eles = ele.getElementsByTagName('div');
+
+    // console.log(eles);
+
+    // var inputEle = document.getElementById('input');
+
+    // var val = inputEle.getAttribute('value');
+
+    // console.log(val);
+    // console.log(inputEle.value);
+
+    // inputEle.setAttribute('value', '测试1231');//设置input对象的value属性为'测试1231'
+
+    // var obj = {
+    //     class: 'input-xxx',
+    //     value: '123',
+    //     getAttribute: function(val) {
+    //         val = 'class'
+    //         return this[val];
+    //         this.class
+
+    //         // return this.name;
+    //     }
+    // }
+
+    // console.log(obj.getAttribute('class'));
+
+    // var elementByCssId = document.querySelector('#test')
+
+    // var eles = document.getElementsByClassName('test'); // 以数组的形式返回所有类名为test的对象
+
+    // console.log(eles);
+
+    // var elementByCssClass = document.querySelector('.test')
+
+    // console.log(elementByCssClass);
+
+    // var allElementByCssClass = document.querySelectorAll('.test')
+
+    // console.log(allElementByCssClass);
+
+    // var mainEle = document.getElementById('main');
+    // var childrenNodes = mainEle.childNodes;
+
+    // // console.log(childrenNodes);
+
+    // for (var i = 0; i < childrenNodes.length; i++) {
+
+    //     console.log(childrenNodes[i].className);
+    //     // element
+    //     if (childrenNodes[i].nodeType === 1 && childrenNodes[i].className.includes('red')) {
+
+    //         childrenNodes[i].style.backgroundColor = 'yellow'
+    //     }
+    // }
+
+    // document.getElementById('test-write').innerHTML = '123'; //在id为test-write的对象内写入123
+
+    // var para = document.createElement('p'); //创建元素
+
+    // var parent = document.getElementById('parent');
+
+    // parent.appendChild(para);
+
+    // para.innerHTML = 'hello';
+
+
+    //生成一个表格
+    // var table = document.createElement('table');
+    // table.border = 1;
+    // var tbody = document.createElement('tbody');
+    // table.appendChild(tbody);
+
+    // tbody.insertRow(0);
+    // tbody.rows[0].insertCell(0);
+    // tbody.rows[0].cells[0].appendChild(document.createTextNode("cell 1,1"));
+    // tbody.rows[0].insertCell(1);
+    // tbody.rows[0].cells[1].appendChild(document.createTextNode("cell 1,2"));
+
+    // tbody.insertRow(1);
+    // tbody.rows[1].insertCell(0);
+    // tbody.rows[1].cells[0].appendChild(document.createTextNode("cell 2,1"));
+    // tbody.rows[1].insertCell(1);
+    // tbody.rows[1].cells[1].appendChild(document.createTextNode("cell 2,2"));
+
+    // var parent = document.getElementById('parent');
+
+    // parent.appendChild(table);
+
+
+
+    function myclick() { //click方法名与window自带的方法重名，这个时候onclick要写为window.click(),或者将函数名改为与内置自带函数不重名的
+        console.log('a123');
+    }
+
+    function test() {
+        console.log('b123');
+    }
+
+    var elem = document.getElementsByClassName('container')[0];
+    // elem.onclick = myclick;
+
+    elem.addEventListener('container', test());
+</script>
+
+</html>
