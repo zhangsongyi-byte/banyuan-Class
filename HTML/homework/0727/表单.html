@@ -60,6 +60,10 @@
             border-radius: 7px;
         }
         
+        button:disabled {
+            background-color: grey;
+        }
+        
         p {
             display: none;
         }
@@ -71,7 +75,7 @@
         <div class="title">
             <h1 style="color: gray; line-height: 100px; margin-left: 50px;">表单</h1>
         </div>
-        <form action="#" method="POST" name="loginform">
+        <form action="" name="loginform">
             <div class="login-text">
                 <span>Your name:</span>
                 <input type="text" placeholder="Your full name" class="name">
@@ -83,7 +87,7 @@
                 <p class="pPwd">密码要8到15位，字母，数字或下划线字符</p>
             </div>
             <div style="text-align: center;">
-                <button class="click">Send</button>
+                <button class="click" disabled>Send</button>
             </div>
         </form>
     </div>
@@ -97,38 +101,35 @@
     var pName = document.getElementsByClassName('pName')[0];
     var pPwd = document.getElementsByClassName('pPwd')[0];
 
+    var nameTestResult = false;
+
+    var pwdTestResult = false;
+
+    var nameFlag = false;
+    var pwdFlag = false;
     user.oninput = function() {
         if (patternName.test(user.value) === true) {
             pName.style.display = 'none';
+            nameFlag = true;
         } else {
             pName.style.display = 'block';
         }
+        enableButton();
     }
     pwd.oninput = function() {
         if (patternPwd.test(pwd.value) === true) {
             pPwd.style.display = 'none';
+            pwdFlag = true;
         } else {
             pPwd.style.display = 'block';
         }
+        enableButton();
     }
-    var btn = document.querySelector('button')
-    btn.onclick = function() {
-        if (patternPwd.test(user.value) == true && patternName.test(pwd.value) == false) {
+    var buttonEle = document.querySelector('button');
 
-            user.value = '';
-            btn.disabled = 'none';
-
-        } else if (patternPwd.test(user.value) == false && patternName.test(pwd.value) == true) {
-
-            pwd.value = '';
-            btn.disabled = 'none';
-
-        } else if (patternPwd.test(user.value) == false && patternName.test(pwd.value) == false) {
-
-            user.value = '';
-            pwd.value = '';
-
-        } else {}
+    // 激活button，一开始的时候设置button是disabled的状态，要用户名和密码都输入正确才是可以点击的状态
+    function enableButton() {
+        buttonEle.disabled = !(nameFlag === true && pwdFlag === true);
     }
 </script>
 
