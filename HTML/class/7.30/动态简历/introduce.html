@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态简历</title>
+</head>
+
+<body>
+    <div class="left">
+        <pre class="leftcontent"></pre>
+    </div>
+
+    <!-- <div class="right">
+        <pre class="rightcontent"></pre>
+    </div> -->
+</body>
+<script>
+    var content = document.getElementsByClassName('leftcontent')[0];
+    var string = 'We are banyuan , a educational club , very good!';
+    var count = 0;
+
+
+    var timer;
+
+    function addContent() {
+        if (count > string.length) {
+            stopIntroduce();
+            // count = 0;
+        } else {
+            count++;
+            content.innerHTML = string.substring(0, count);
+        }
+    }
+
+    function startIntroduce() {
+        setInterval(addContent, 80);
+    }
+
+    function stopIntroduce() {
+        if (timer) {
+            clearInterval(timer);
+        }
+    }
+    startIntroduce();
+</script>
+
+</html>

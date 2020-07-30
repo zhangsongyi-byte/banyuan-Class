@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css'></link>
+
+    <style id="styleTag"></style>
+</head>
+
+<body style="padding: 25px;">
+
+    <div class="leftContent">
+        <pre class="left"></pre>
+    </div>
+    <div class="rightContent">
+        <pre class="right"></pre>
+    </div>
+
+    <script src="marked.js"></script>
+    <script>
+        /* 简历内容 */
+        const resumeContent = [`
+## MyResume
+    
+### name : *Ban Yuan*
+### slogen : *一次相遇终身相伴*
+### Email : *contact@banyuan.club*
+### website : www.banyuan.club`];
+
+        /* 叙述内容 */
+        const styleContent = [
+            `/* Hello, My name is Ban Yuan,
+    * This is how I write my resume.
+    * I hope you like it~
+    * ===================================================
+    */`, `/* This interface is not like development interface.
+    /* So , let me beautify the interface ^_^
+    */`, `
+    *{
+    transition: all .3s;
+    }
+    html {
+    color: #06EB00; background: #030303;
+    }
+    .leftContent {
+    padding: 5px;
+    border: 1px solid;
+    overflow: auto;
+    width: 45vw; 
+    height: 90vh;
+    float:left;
+    }
+    /* It looks like a  command-line tool now , right ?
+    /* Let me finish my resume~
+    * ====================================================
+    * First of all , I need a paper.
+    */
+    .rightContent {
+    float:left;
+    padding: 5px;  
+    width: 45vw; 
+    height: 90vh; 
+    border: 1px solid;
+    background: white; 
+    color: #222;
+    overflow: auto;
+    margin-left:2vw;
+    }
+    /* Now, I got a white paper. 
+    * Let me start~~
+    */`, `/*As you see, it wirte by markdown grammar.
+    /*Let me translated into HTML by using marked package.*/
+    /*Let us start~*/
+    /*....1....*/
+    /*....2....*/
+    /*....3....*/
+    /*.action!.*/`, `
+    /*Emmmmmmmmmmmmmmmm......*/
+    /*It is not pretty right?*/
+    /*So I use css to beautify my resume. I use github-markdown-css.*/
+    /*Let us start~*/
+    /*....1....*/
+    /*....2....*/
+    /*....3....*/
+    /*...go!...*/`,
+            `/*And here we are.*/?`
+        ];
+        var styleTag = document.getElementById('styleTag');
+        var styleStr = styleContent.join('');
+        var left = document.getElementsByClassName('left')[0];
+        var leftcontent = document.getElementsByClassName('leftContent')[0];
+        var rightcontent = document.getElementsByClassName('rightContent')[0];
+        var right = document.getElementsByClassName('right')[0];
+
+        var leftCount = 0;
+        var rightCount = 0;
+        var timer;
+
+
+        function addLeftContent() {
+            left.innerHTML = styleStr.substring(0, leftCount);
+
+            styleTag.innerHTML = styleStr.substring(0, leftCount);
+
+            scroll(leftcontent);
+        }
+
+
+        function showContent() {
+            if (leftCount < styleContent.slice(0, 3).join('').length) {
+                leftCount++;
+                addLeftContent();
+            } else {
+                rightCount++;
+                right.innerHTML = resumeContent[0].substring(0, rightCount);
+
+                if (rightCount > resumeContent[0].length) {
+                    leftCount++;
+                    addLeftContent();
+
+                    if (leftCount >= styleContent.slice(0, 4).join('').length) {
+
+                        right.innerHTML = marked(resumeContent[0].substring(0, rightCount));
+                    }
+                }
+
+                if (leftCount > styleContent.slice(0, 5).join('').length) {
+                    right.className = 'markdown-body';
+                }
+            }
+
+            if (leftCount > styleStr.length) {
+                stop();
+            }
+        }
+
+        function start() {
+            timer = setInterval(showContent, 10);
+        }
+
+        function stop() {
+            if (timer) {
+                clearInterval(timer);
+            }
+        }
+
+        function scroll(elem) {
+            if (elem) {
+                elem.scrollTop = elem.scrollHeight;
+            }
+        }
+
+        // console.log(styleContent.slice(0, 3));
+        start();
+    </script>
+</body>
+
+</html>

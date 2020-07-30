@@ -10,6 +10,7 @@ var right = document.getElementsByClassName('right')[0];
 var buttonContainer = document.getElementsByClassName('button')[0];
 var buttons = document.getElementsByClassName('button_container_circle');
 
+var div = document.getElementsByClassName('div')[0];
 var offset = img.offsetWidth;
 
 var timer;
@@ -36,9 +37,10 @@ for (var i = 0; i < arrows.length; i++) {
     arrows[i].style.top = parseInt(img.offsetHeight) / 2 - parseInt(arrows[i].offsetHeight) / 2 + 'px';
 }
 
+
 //初始化button位置
 buttonContainer.style.top = img.offsetHeight - 40 + "px";
-buttonContainer.style.left = (offset - buttonContainer.offsetWidth) / 2 + 'px';
+buttonContainer.style.left = offset / 2 - buttonContainer.offsetWidth / 2 + 'px';
 
 left.onclick = function leftC() {
     index--;
