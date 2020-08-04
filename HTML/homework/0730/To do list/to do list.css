@@ -49,7 +49,7 @@ ul li:nth-child(odd) {
 }
 
 ul li:hover {
-    background-color: plum;
+    background-color: #ddd;
 }
 
 ul li.checked {
