@@ -10,15 +10,15 @@ const { rejects } = require('assert');
 
 
 //写入文件
-// fs.readFile(path.join(__dirname, './1.txt'), function(error, data) {
-//     if (error) {
-//         console.log('=======>', error);
-//     } else {
-//         console.log(data.toString()); //原本拿到的数据是二进制的，需要通过toString函数获取真实的内容
-//     }
-// })
+fs.readFile(path.join(__dirname, './1.txt'), function(error, data) {
+    if (error) {
+        console.log('=======>', error);
+    } else {
+        console.log(data.toString()); //原本拿到的数据是二进制的，需要通过toString函数获取真实的内容
+    }
+})
 
-// console.log(path.join(__dirname, '../HTML/7.7/0707.md'));
+console.log(path.join(__dirname, '../HTML/7.7/0707.md'));
 
 //写入一个新的文件并读取它的内容
 // fs.writeFile(path.join(__dirname, './2.txt'), '2234', function(error) {
@@ -38,36 +38,31 @@ const { rejects } = require('assert');
 
 
 //回调地狱
-// fs.writeFile(path.join(__dirname, './1.txt'), 'say', function(error) {
-//     if (error) { console.log(error); } 
-//     else {
-//         fs.writeFile(path.join(__dirname, './2.txt'), 'hello', function(error) {
-//             if (error) { console.log(error); } 
-//             else {
-//                 fs.readFile(path.join(__dirname, './1.txt'), function(error, data) {
-//                     if (error) { console.log(error); } 
-//                     else {
-//                         fs.readFile(path.join(__dirname, './2.txt'), function(error, content) {
-//                             if (error) { console.log(error); } 
-//                             else {
-//                                 fs.writeFile(path.join(__dirname, './3.txt'), `${data.toString()}${content.toString()}`, function(error) {
-//                                     if (error) { console.log(error); } 
-//                                     else {
-//                                         fs.readFile(path.join(__dirname, './3.txt'), function(error, content1) {
-//                                             if (error) { console.log(error); } else {
-//                                                 console.log(content1.toString());
-//                                             }
-//                                         })
-//                                     }
-//                                 })
-//                             }
-//                         })
-//                     }
-//                 })
-//             }
-//         })
-//     }
-// })
+fs.writeFile(path.join(__dirname, './1.txt'), 'say', function(error) {
+    if (error) { console.log(error); } else {
+        fs.writeFile(path.join(__dirname, './2.txt'), 'hello', function(error) {
+            if (error) { console.log(error); } else {
+                fs.readFile(path.join(__dirname, './1.txt'), function(error, data) {
+                    if (error) { console.log(error); } else {
+                        fs.readFile(path.join(__dirname, './2.txt'), function(error, content) {
+                            if (error) { console.log(error); } else {
+                                fs.writeFile(path.join(__dirname, './3.txt'), `${data.toString()}${content.toString()}`, function(error) {
+                                    if (error) { console.log(error); } else {
+                                        fs.readFile(path.join(__dirname, './3.txt'), function(error, content1) {
+                                            if (error) { console.log(error); } else {
+                                                console.log(content1.toString());
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
+})
 
 // let promise = new Promise();
 
@@ -95,7 +90,8 @@ const { rejects } = require('assert');
 
 
 
-//promise解决回调地狱
+promise解决回调地狱
+
 function readFile(address) {
 
     let promise = new Promise((resolve, reject) => {
@@ -125,27 +121,27 @@ function writeFile(address, content) {
     })
 }
 
-// let content = '';
+let content = '';
 
-// readFile(path.join(__dirname, './1.txt'))
-//     .then((data) => {
-//         content += data;
-//         return readFile(path.join(__dirname, './2.txt'));
-//     })
-//     .then((data) => {
-//         content += data;
-//         return writeFile(path.join(__dirname, './3.txt'), content);
-//     })
-//     .then((data) => {
-//         console.log(data);
-//     })
-//     .catch((e) => {
-//         console.log(e);
-//     })
+readFile(path.join(__dirname, './1.txt'))
+    .then((data) => {
+        content += data;
+        return readFile(path.join(__dirname, './2.txt'));
+    })
+    .then((data) => {
+        content += data;
+        return writeFile(path.join(__dirname, './3.txt'), content);
+    })
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((e) => {
+        console.log(e);
+    })
 
 
 
-//语法糖===>最终解决方案
+语法糖 === > 最终解决方案
 async function main() {
     try {
 
