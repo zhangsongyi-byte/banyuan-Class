@@ -115,7 +115,7 @@ function writeFile(address, content) {
             if (error) {
                 reject(error);
             } else {
-                resolve(content);
+                resolve(content.toString());
             }
         })
     })
@@ -141,15 +141,15 @@ readFile(path.join(__dirname, './1.txt'))
 
 
 
-语法糖 === > 最终解决方案
+// 语法糖 === > 最终解决方案
 async function main() {
     try {
 
         // let result = await Promise.all([readFile(path.join(__dirname, './1.txt')), readFile(path.join(__dirname, './2.txt'))])
 
-        // console.log(result);
-
         // console.log(await writeFile(path.join(__dirname, './3.txt'), result[0] + result[1]));
+
+        // console.log(result);
 
         let data1 = await readFile(path.join(__dirname, './13.txt'));
 
