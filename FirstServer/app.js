@@ -1,7 +1,8 @@
-rconst Koa = require('koa')
+const Koa = require('koa')
 const Router = require('koa-router')
 const app = new Koa()
 const router = new Router()
+const cors = require("koa2-cors");
 
 const views = require('koa-views')
 const co = require('co')
@@ -15,6 +16,7 @@ const path = require('path')
 
 const config = require('./config')
 const routes = require('./routes')
+const { resolve } = require('path')
 
 const port = process.env.PORT || config.port
 
@@ -25,6 +27,9 @@ onerror(app)
 app.use(bodyparser())
     .use(json())
     .use(logger())
+    .use(cors({
+        credentials: true,
+    }))
     .use(require('koa-static')(__dirname + '/public'))
     .use(views(path.join(__dirname, '/views'), {
         options: { settings: { views: path.join(__dirname, 'views') } },
@@ -42,37 +47,47 @@ app.use(async(ctx, next) => {
     console.log(`${ctx.method} ${ctx.url} - $ms`)
 })
 
-router.get('/test', async(ctx, next) => {
-    // ctx.body = 'Hello World'
-    // ctx.state = {
-    //     title: 'Koa2'
-    // }
+// router.get('/test', async(ctx, next) => {
+//     // ctx.body = 'Hello World'
+//     // ctx.state = {
+//     //     title: 'Koa2'
+//     // }
 
 
-    let { user, id } = ctx.request.query;
-    // console.log(user);
-    // console.log(id);
+//     let { user, id } = ctx.request.query;
+//     // console.log(user);
+//     // console.log(id);
 
-    let obj = {
-        user,
-        id
-    };
-    ctx.response.body = obj;
+//     let obj = {
+//         user,
+//         id
+//     };
+//     ctx.response.body = obj;
 
-    // await ctx.render('index', ctx.state)
-})
+//     // await ctx.render('index', ctx.state)
+// })
 
-router.post('/post', (ctx, next) => {
-    const { name, id } = ctx.request.body;
-    console.log("====>");
-    console.log(name);
-    console.log(id);
-    console.log("====>");
+router.post('/banyuan/ajax', async function(ctx, next) {
+    const query = ctx.request.body;
+
+    if (query.status === 'time') {
+        await sleep(5000);
+    }
+
 
     ctx.response.body = {
-        type: "post"
+        status: 'success'
     };
 })
+
+//延时器
+function sleep(time) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, time);
+    })
+}
 
 routes(router)
 app.on('error', function(err, ctx) {

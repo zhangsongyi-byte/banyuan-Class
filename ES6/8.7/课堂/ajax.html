@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main"></div>
+    <button onclick="ajax()">ajax</button>
+    <button onclick="test()">test</button>
+
+</body>
+<script src="jquery3.5.js"></script>
+
+<script>
+    function ajax() {
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: 'http://localhost:3000/banyuan/ajax',
+            data: {
+                status: 'time'
+            },
+            success: function(result) {
+                $('.main').html("<span>成功!</span>");
+            },
+            error: function(error) {
+                $('.main').html("<span>失败!</span>");
+            }
+        });
+    }
+
+    function test() {
+        console.log(1);
+    }
+</script>
+
+</html>

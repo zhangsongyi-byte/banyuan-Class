@@ -75,25 +75,25 @@
         <div class="title">
             <h1 style="color: gray; line-height: 100px; margin-left: 50px;">表单</h1>
         </div>
-        <form action="" name="loginform">
+        <form action="http://localhost:3000/isPrime" method="POST" name="loginform">
             <div class="login-text">
                 <span>Your name:</span>
-                <input type="text" placeholder="Your full name" class="name">
+                <input type="text" placeholder="Your full name" name="name" class="name">
                 <p class="pName">用户名要为字母，数字，下划线，以字母开头，长度在4-16位</p>
             </div>
             <div class="login-password">
                 <span>Your password:</span>
-                <input type="password" class="password">
+                <input type="password" class="password" name="password">
                 <p class="pPwd">密码要8到15位，字母，数字或下划线字符</p>
             </div>
             <div style="text-align: center;">
-                <button class="click" disabled>Send</button>
+                <button type="submit" class="click">Send</button>
             </div>
         </form>
     </div>
 </body>
 
-<script>
+<!-- <script>
     var user = document.getElementsByClassName('name')[0];
     var pwd = document.getElementsByClassName('password')[0];
     var patternName = /^([0-9a-zA-Z]|-|_){4,16}$/;
@@ -131,6 +131,6 @@
     function enableButton() {
         buttonEle.disabled = !(nameFlag === true && pwdFlag === true);
     }
-</script>
+</script> -->
 
 </html>

@@ -48,10 +48,11 @@ router.get('/add', async(ctx, next) => {
         title: 'Koa2'
     }
 
-    let { a, b } = ctx.request.query;
+    let { name, password } = ctx.request.query;
 
     let obj = {
-        "sum": Number(a) + Number(b)
+        "name": name,
+        "password": password
     };
 
     ctx.response.body = obj;
@@ -60,33 +61,35 @@ router.get('/add', async(ctx, next) => {
 })
 
 router.post('/isPrime', (ctx, next) => {
-    const { number } = ctx.request.body;
 
-    function isPrime(number) {
+    const { name, password } = ctx.request.body;
+    //     const { number } = ctx.request.body;
 
-        for (let i = 2; i < number; i++) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-        return true;
+    //     function isPrime(number) {
 
-    }
+    //         for (let i = 2; i < number; i++) {
+    //             if (number % i == 0) {
+    //                 return false;
+    //             }
+    //         }
+    //         return true;
 
-    function main(number) {
-        if (isPrime(number) === false) {
-            while (isPrime(number) === false) {
-                number++;
-                isPrime(number);
-            }
-            return number;
-        }
-    }
+    //     }
+
+    //     function main(number) {
+    //         if (isPrime(number) === false) {
+    //             while (isPrime(number) === false) {
+    //                 number++;
+    //                 isPrime(number);
+    //             }
+    //             return number;
+    //         }
+    //     }
 
 
     let obj = {
-        "isPrime": isPrime(number),
-        "number": main(number)
+        "name": name,
+        "password": password
     }
 
     ctx.response.body = obj;
