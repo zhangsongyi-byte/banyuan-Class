@@ -1,0 +1,22 @@
+{% extends 'layout.njk' %}
+{%block content%}
+
+    {# {%if flag%}
+<div>flag is true</div>
+{%else%}
+<div>flag is false</div>
+{%endif%}
+
+{%if gender===0%}
+<div>woman</div>
+{%else%}
+<div>man</div>
+{%endif%} #}
+
+    {%for item in news%}
+        <div>{{item.name}}</div>
+        <div>{{item.id}}</div>
+
+        {%endfor%}
+
+    {% endblock %}
