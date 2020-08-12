@@ -1,0 +1,35 @@
+{% extends 'layout.njk' %}
+{% block content %}
+<div class="main">
+
+      <div>
+        用户名：
+        <input type="text" class="name"/>
+        <p class="pName" style="display:none">用户名要为字母，数字，下划线，以字母开头，长度在4-16位</p>
+
+      </div>
+
+      <div>
+        密码：
+        <input type="text" class="password"/>
+        <p class="pPwd" style="display:none">密码要8到15位，字母，数字或下划线字符</p>
+      </div>
+
+      <div>
+        确认：
+        <input type="text" class="check"/>
+        <p class="pCheck" style="display:none">密码不一致</p>
+
+      </div>
+
+      <div>
+        <button type="button" class="button" disabled>注册</button>
+      </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script src='/js/jquery3.5.js'></script>
+<script src='/js/jquery.cookie.js'></script>
+<script src='/js/index.js'></script>
+{% endblock %}

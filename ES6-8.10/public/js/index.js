@@ -49,6 +49,8 @@ function addTask() {
 
             task.appendChild(li);
 
+            li.setAttribute('task', input.value);
+
             input.value = '';
 
             var span = createClose(); //给新添加的li标签添加删除键

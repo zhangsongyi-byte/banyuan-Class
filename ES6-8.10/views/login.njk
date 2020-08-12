@@ -1,0 +1,54 @@
+{%extends 'layout.njk'%}
+
+{%block content%}
+
+    <div>
+        <span>用户登录</span>
+        <input class="username">
+    </div>
+
+    <div>
+        <span>密码</span>
+        <input class="password">
+    </div>
+
+    <div>
+        <button class="login-btn">登录</button>
+    </div>
+
+    <input class='input1' type='text'>
+    <input class='input2' type='password'>
+
+    {%endblock%}
+
+    {%block script%}
+        <script src='/js/login.js'></script>
+        <script>
+            let input1 = document.getElementsByClassName('input1')[0];
+            let input2 = document.getElementsByClassName('input2')[0];
+
+            init();
+            let data = $.cookie('form')
+                ? JSON.parse($.cookie('form'))
+                : {};
+
+            input1.onblur = function () {
+                data.input1 = input1.value;
+                $.cookie('form', JSON.stringify(data));
+            }
+
+            input2.onblur = function () {
+                data.input2 = input2.value;
+                $.cookie('form', JSON.stringify(data));
+            }
+
+            function init() {
+                if ($.cookie('form')) {
+                    let data = JSON.parse($.cookie('form'))
+                    input1.value = data.input1 || '';
+                    input2.value = data.input2 || '';
+                }
+
+            }
+        </script>
+        {%endblock%}
