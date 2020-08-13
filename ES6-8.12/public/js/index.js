@@ -6,6 +6,30 @@ let pName = document.getElementsByClassName('pName')[0];
 let pPwd = document.getElementsByClassName('pPwd')[0];
 let pCheck = document.getElementsByClassName('pCheck')[0];
 
+let loginName = document.getElementsByClassName('loginName')[0];
+let loginPwd = document.getElementsByClassName('loginPwd')[0];
+let loginButton = document.getElementsByClassName('loginButton')[0];
+
+loginButton.onclick = function() {
+    $.ajax({
+        type: 'post',
+        url: 'http://localhost:3000/checkLogin',
+        data: {
+            name: loginName.value,
+            password: loginPwd.value
+        },
+        success: (result) => {
+            if (result.status === 'success') {
+                alert('登陆成功');
+            } else {
+                alert(result.message);
+            }
+        }
+    })
+}
+
+
+
 
 let patternName = /^([0-9a-zA-Z]|-|_){4,16}$/;
 let patternPwd = /^([0-9a-zA-Z]|_){8,15}$/;

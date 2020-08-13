@@ -3,6 +3,7 @@ const Router = require('koa-router')
 const app = new Koa()
 const router = new Router()
 
+const mongoose = require('mongoose')
 const views = require('koa-views')
 const co = require('co')
 const cors = require('koa2-cors');
@@ -38,13 +39,37 @@ app.use(bodyparser())
     .use(router.routes())
     .use(router.allowedMethods())
 
+
+async function initConnection() {
+    await mongoose.connect('mongodb://localhost/local', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }, (error) => {
+        if (error) {
+            console.log(error);
+        }
+        console.log('mongodb connection success');
+    });
+}
+
+initConnection();
+
 // logger
 app.use(async(ctx, next) => {
-    const start = new Date()
-    await next()
-    const ms = new Date() - start
-    console.log(`${ctx.method} ${ctx.url} - $ms`)
-})
+        const start = new Date()
+        await next()
+        const ms = new Date() - start
+        console.log(`${ctx.method} ${ctx.url} - $ms`)
+    })
+    //放入数据库中
+const { Schema } = mongoose;
+
+const usersSchema = new Schema({
+    name: String,
+    password: String,
+});
+
+const usersModel = mongoose.model('users', usersSchema);
 
 router.get('/login', async(ctx, next) => {
     // ctx.body = 'Hello World'
@@ -54,7 +79,9 @@ router.get('/login', async(ctx, next) => {
     await ctx.render('index', ctx.state)
 })
 
-router.post('/register', (ctx, next) => {
+
+
+router.post('/register', async(ctx, next) => {
     const { name, password, check } = ctx.request.body;
 
     let patternName = /^([0-9a-zA-Z]|-|_){4,16}$/;
@@ -70,12 +97,48 @@ router.post('/register', (ctx, next) => {
     }
 
     if (nameFlag && pwdFlag && checkFlag) {
+
+        let data = {
+            name,
+            password
+        }
+
+        const userModel = new usersModel(data);
+
+        await userModel.save();
+
+        //根据存储的用户名判断password是否正确
+
         ctx.response.body = {
             status: 'success'
         }
     }
 
 
+})
+
+router.post('/checkLogin', async(ctx, next) => {
+    const { name, password } = ctx.request.body;
+
+    try {
+        let data = { status: 'failed' };
+
+        let result = await usersModel.findOne({ name });
+
+        console.log(result);
+        if (result) {
+            if (result.password != password) {
+                data.message = '密码不正确';
+            } else {
+                data.status = 'success';
+            }
+        } else {
+            data.message = '用户名不存在';
+        }
+        ctx.response.body = data;
+    } catch (error) {
+        console.log(error);
+    }
 })
 
 routes(router)
