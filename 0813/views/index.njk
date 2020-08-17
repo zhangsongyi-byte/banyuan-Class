@@ -35,7 +35,14 @@
 <div class='student-list'>
 
     {% for item in students %}
-        
+        {%if item.gender===1 %}
+        男
+        {%else%}
+        女
+        {%endif%}
+        {{item.age}}岁
+
+        学习{{item.major}}
         
     {% endfor %}
 </div>

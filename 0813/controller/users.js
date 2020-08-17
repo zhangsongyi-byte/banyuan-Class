@@ -1,35 +1,36 @@
-const mongoose = require('mongoose')
+const services = require('../services/student')
 
 async function welcome(ctx, next) {
+    // const students = await studentsModel.find({}).lean()
+
+    // ctx.state = {
+    //     students
+    // }
 
     await ctx.render('index')
 }
-const { Schema } = mongoose
-const usersSchema = new Schema({
-    name: String,
-    gender: Number,
-    age: Number,
-    majors: String
-})
+// const { Schema } = mongoose
+// const studentsSchema = new Schema({
+//     name: String,
+//     age: Number,
+//     gender: Number,
+//     major: String
+// })
 
-const usersModel = mongoose.model('students', usersSchema)
+// const studentsModel = mongoose.model('students', studentsSchema)
 
-let students = ['name', 'gender', 'age', 'major']
+// let students = ['name', 'gender', 'age', 'major']
 
 async function add(ctx, next) {
-    const { name, gender, age, major } = ctx.request.body
-    let data = {
-        name,
-        gender,
-        age,
-        major
-    }
+    const data = ctx.request.body
 
-    const userModel = new usersModel(data)
+    let result = await services.addStudent(data)
 
-    await userModel.save()
+    // const studentModel = new studentsModel(data)
 
-    ctx.response.body = { status: 'success' }
+    // await studentModel.save()
+
+    ctx.response.body = result
 }
 module.exports = {
     welcome,

@@ -3,11 +3,10 @@ const Router = require('koa-router')
 const app = new Koa()
 const router = new Router()
 
-const mongoose = require('mongoose')
 const views = require('koa-views')
-const cors = require('koa2-cors')
 const co = require('co')
 const convert = require('koa-convert')
+const cors = require('koa2-cors')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
@@ -15,7 +14,8 @@ const logger = require('koa-logger')
 const debug = require('debug')('koa2:server')
 const path = require('path')
 
-const { initConnection } = require('./models/connection')
+//models/connection文件夹下，默认的连接数据库的js文件名为index，如果自己重新命名，需要把自己命名的文件名也加上去
+const { initConnection } = require('./models/connection/dbconnection')
 
 const config = require('./config')
 const routes = require('./routes')
@@ -25,9 +25,8 @@ const port = process.env.PORT || config.port
 // error handler
 onerror(app)
 
-//连接上数据库
-initConnection()
 
+initConnection();
 
 // middlewares
 app.use(bodyparser())
@@ -54,7 +53,6 @@ app.use(async(ctx, next) => {
 })
 
 
-//路由
 routes(router)
 
 app.on('error', function(err, ctx) {

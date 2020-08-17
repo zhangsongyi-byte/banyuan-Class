@@ -2,7 +2,7 @@ let btn = document.getElementsByClassName('login-btn')[0];
 let nameInput = document.getElementsByClassName('username')[0];
 let passwordInput = document.getElementsByClassName('password')[0];
 
-btn, onclick = function() {
+btn.onclick = function() {
     if (nameInput.value && passwordInput.value) {
         $.ajax({
             type: 'post',

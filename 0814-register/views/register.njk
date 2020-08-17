@@ -1,0 +1,46 @@
+{%extends 'layout.njk'%}
+{%block content%}
+    <div>
+        用户名：
+        <input type="text" class="name">
+    </div>
+
+    <div>
+        密码：
+        <input type="password" class="password">
+    </div>
+    <div>
+        <button class="regist-btn" disabled="disabled">注册</button>
+    </div>
+
+    <div>
+        用户名：
+        <input type="text" class="login-name">
+    </div>
+
+    <div>
+        密码：
+        <input type="password" class="login-password">
+    </div>
+    <div>
+        <button class="login-btn">登录</button>
+    </div>
+
+    <div>
+        {% for item in users %}
+            <div>
+                <span>
+                    用户名：{{item.name}}
+                    密码：{{item.password}}
+                </span>
+            </div>
+            {%endfor%}
+        </div>
+
+   
+
+    {%endblock%}
+
+    {%block script%}
+        <script src='/js/register.js'></script>
+        {%endblock%}
