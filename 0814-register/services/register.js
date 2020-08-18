@@ -40,6 +40,7 @@ async function login(name, password) {
     return data
 }
 
+
 module.exports = {
     checkName,
     checkPassword,

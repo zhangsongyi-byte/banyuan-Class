@@ -49,9 +49,9 @@ async function add(ctx, next) {
 }
 async function select(ctx,next){
   const {gender}=ctx.request.body
-  console.log(gender)
+
   let genderData={}
-  if(gender == '0'){
+  if(gender == 0){
     genderData= await find({gender:'0'})
   }else{
     // console.log(1)

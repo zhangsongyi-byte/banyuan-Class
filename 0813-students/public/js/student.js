@@ -72,6 +72,7 @@ genderSelect.onchange = function () {
   let gender = genderSelect.options[index]
 
   let genderValue = gender.value
+  // console.log(genderValue)
   $.ajax({
     type: 'post',
     url: 'http://localhost:3000/select',

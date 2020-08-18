@@ -8,7 +8,7 @@ async function insertOne(data) {
 
 async function find(query) {
 
-  return await studentsModel.find(query)
+  return await studentsModel.find(query).lean()//如果不加lean()，那么返回的是一个document而不是一个object，不能直接进行重置操作
 }
 
 module.exports = {
