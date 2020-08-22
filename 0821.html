@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀑布流</title>
+<!-- 瀑布流：定宽不定高，左右，上下间隙一致，div平铺，不能用float的方法，因为从第二行开始的第一个div会从第一行的第二个div下面开始排列 -->
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        /* 给所有的item一个absolute的position */
+        .item {
+            width: 200px;
+            margin-right: 80px;
+            margin-bottom: 50px;
+            position: absolute;
+            border-radius: 10px;
+        }
+
+        .item-1 {
+            height: 200px;
+            background-color: rgb(19, 177, 224);
+        }
+
+        .item-2 {
+            height: 105px;
+            background-color: rgb(167, 197, 111);
+        }
+
+        .item-3 {
+            height: 120px;
+            background-color: rgb(90, 124, 134);
+        }
+
+        .item-4 {
+            height: 115px;
+            background-color: rgb(40, 49, 51);
+        }
+
+        .item-5 {
+            height: 130px;
+            background-color: rgb(87, 91, 92);
+        }
+
+        .item-6 {
+            height: 125px;
+            background-color: rgb(206, 184, 231);
+        }
+
+        .item-7 {
+            height: 175px;
+            background-color: rgb(57, 44, 58);
+        }
+
+        .item-8 {
+            height: 200px;
+            background-color: rgb(130, 68, 138);
+        }
+
+        .item-9 {
+            height: 165px;
+            background-color: rgb(121, 82, 88);
+        }
+
+        .item-10 {
+            height: 115px;
+            background-color: rgb(187, 166, 120);
+        }
+
+        .item-11 {
+            height: 120px;
+            background-color: rgb(210, 224, 19);
+        }
+
+        .item-12 {
+            height: 150px;
+            background-color: rgb(238, 165, 81);
+        }
+
+        .item-13 {
+            height: 225px;
+            background-color: rgb(107, 170, 146);
+        }
+
+        .item-14 {
+            height: 130px;
+            background-color: rgb(101, 150, 101);
+        }
+
+        .item-15 {
+            height: 145px;
+            background-color: rgb(117, 150, 104);
+        }
+
+        .item-16 {
+            height: 205px;
+            background-color: rgb(108, 19, 224);
+        }
+
+        .item-17 {
+            height: 175px;
+            background-color: pink;
+        }
+
+        .item-18 {
+            height: 170px;
+            background-color: paleturquoise
+        }
+
+        .item-19 {
+            height: 109px;
+            background-color: palevioletred;
+        }
+
+        .item-20 {
+            height: 140px;
+            background-color: aqua;
+        }
+
+        .item-21 {
+            height: 123px;
+            background-color: aquamarine;
+        }
+
+        .item-22 {
+            height: 155px;
+            background-color: green;
+        }
+
+        .item-23 {
+            height: 120px;
+            background-color: bisque;
+        }
+
+        .item-24 {
+            height: 215px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="item item-1">1</div>
+    <div class="item item-2">2</div>
+    <div class="item item-3">3</div>
+    <div class="item item-4">4</div>
+    <div class="item item-5">5</div>
+    <div class="item item-6">6</div>
+    <div class="item item-7">7</div>
+    <div class="item item-8">8</div>
+    <div class="item item-9">9</div>
+    <div class="item item-10">10</div>
+    <div class="item item-11">11</div>
+    <div class="item item-12">12</div>
+    <div class="item item-13">13</div>
+    <div class="item item-14">14</div>
+    <div class="item item-15">15</div>
+    <div class="item item-16">16</div>
+    <div class="item item-17">17</div>
+    <div class="item item-18">18</div>
+    <div class="item item-19">19</div>
+    <div class="item item-20">20</div>
+    <div class="item item-21">21</div>
+    <div class="item item-22">22</div>
+    <div class="item item-23">23</div>
+    <div class="item item-24">24</div>
+
+</body>
+
+<script>
+    /* 拿到所有的item */
+    let itemEle = document.getElementsByClassName('item');
+
+    /* 定间隙 */
+    let gap = 10;
+
+
+    waterFall();
+
+
+
+    function waterFall() {
+
+
+        /* 
+         *offsetHeight:div本身的高度
+         *offsetWidth:div本身的宽度
+         *offsetLeft:div离屏幕左边框的距离
+        */
+        let pageWidth = window.innerWidth;
+        let itemWidth = itemEle[0].offsetWidth;
+        /* 列数=页面宽度/(每个div的宽度+gap) */
+        let columns =parseInt(pageWidth / (itemWidth+gap)) ;
+
+        /* 定义一个数组，来存放每一列的div高度 */
+        let arr = [];
+
+        for (let i = 0; i < itemEle.length; i++) {
+            /* 第一行 */
+            if (i < columns) {
+                itemEle[i].style.top = 0;
+                itemEle[i].style.left = (itemWidth + gap) * i + 'px';
+                arr.push(itemEle[i].offsetHeight);
+             } 
+            else {
+                /* 找出每一列最小的高度，因为下一列开始插入的时候会从上一列最低高度开始插入 */
+                let minHeight = arr[0];
+                let index = 0;
+                for (let j = 0; j < arr.length; j++) {
+                    if (minHeight>arr[j]) {
+                        minHeight = arr[j];
+                        index = j;
+                    }
+                }
+
+                /* top是最小列的高度+gap */
+                itemEle[i].style.top = arr[index] + gap + 'px';
+                itemEle[i].style.left = itemEle[index].offsetLeft + 'px'
+
+
+                /* 修改最小列的高度：等于原先最高列的高度+自身的div高度+gap */
+                arr[index]=arr[index]+itemEle[i].offsetHeight+gap;
+            }
+        }
+    }
+
+    /* onresize是重新定义大小，当左右拖动页面时，会动态的添加每一行的div数，会重新添加重新渲染 */
+    window.onresize=function(){
+        waterFall();
+    }
+
+
+</script>
+
+</html>
