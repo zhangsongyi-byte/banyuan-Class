@@ -1,0 +1,22 @@
+.main{
+    background-color:black;
+    width: 300px;
+    height: 300px;
+}
+
+.header{
+    text-align: center;
+}
+
+.header-input{
+    display: none;
+}
+
+.header-left-nav{
+    display: none;
+}
+
+.button{
+    display: inline-block;
+    text-align: center;
+}

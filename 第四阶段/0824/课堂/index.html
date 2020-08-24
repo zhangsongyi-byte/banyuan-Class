@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .main {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            /* font-size: 12px; */
+            transition: all 0.5s;
+        }
+
+        .header {
+            /* width: 100%; */
+            /* height: 46px; */
+            line-height: 1.5;
+            background-color: black;
+            padding: 13px 16px;
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* 左侧导航栏 */
+        .header-left-svg {
+            z-index: 10;
+            fill: #fff;
+        }
+
+        .button{
+            display:none;
+        }
+
+        .header-left-svg {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            left: 5px;
+            fill: white;
+            z-index: 11;
+        }
+
+        .header-left-svg:hover {
+            fill: hsla(0, 0%, 100%, .7);
+        }
+
+
+        .header-input {
+            width: 296px;
+            height: 28px;
+            border-radius: 5px;
+            background: none;
+            border: 0;
+            margin-left: 15px;
+            line-height: 1.5;
+            /* color: inherit; */
+            background-color: hsla(0, 0%, 100%, .125);
+            vertical-align: middle;
+        }
+
+        .input-img {
+            vertical-align: middle;
+            position: relative;
+            left: -33px;
+        }
+
+        .header-left-ul {
+            position: relative;
+            left: -31px;
+        }
+
+        .header-left-nav {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .header-left-ul-li {
+            list-style: none;
+            float: left;
+            margin-left: 17px;
+        }
+
+        .header-left-ul-li a:link {
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .header-left-ul-li a:visited {
+            color: white;
+        }
+
+        .header-left-ul-li a:hover {
+            color: hsla(0, 0%, 100%, .7);
+        }
+
+        .header-left-ul-li a:active {
+            color: white;
+        }
+
+        /* 只有在屏幕的情况下  宽度在300-500之间，背景颜色变为黑色 */
+        /* @media only screen and (min-width:300px) and (max-width: 500px) {
+            .main{
+                background-color:black;
+                width: 300px;
+                height: 300px;
+            }
+        } */
+        /* 只有在打印的情况下 */
+        /* @media only print{
+            .main{
+                font-size: 50px;
+            }
+        } */
+    </style>
+
+
+    <!-- 如果放在head里面，会被style里面的css样式覆盖掉，所以要放在下面 -->
+    <link rel="stylesheet" type="text/css" href="static/m300.css" media="only screen and (max-width:800px)">
+    <link rel="stylesheet" type="text/css" href="static/m480.css" media="only screen and (min-width:302px) and (max-width:370px)">
+</head>
+
+<body>
+    <!-- <div class="main">test</div> -->
+    <div class="header">
+        <div class="button">
+            <a href="#" class="header-left-svg-a">
+                <svg class="header-left-svg" width="32" height="32" viewBox="0 0 16 16" version="1.1"
+                    aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M 8 0 C 3.58 0 0 3.58 0 8 c 0 3.54 2.29 6.53 5.47 7.59 c 0.4 0.07 0.55 -0.17 0.55 -0.38 c 0 -0.19 -0.01 -0.82 -0.01 -1.49 c -2.01 0.37 -2.53 -0.49 -2.69 -0.94 c -0.09 -0.23 -0.48 -0.94 -0.82 -1.13 c -0.28 -0.15 -0.68 -0.52 -0.01 -0.53 c 0.63 -0.01 1.08 0.58 1.23 0.82 c 0.72 1.21 1.87 0.87 2.33 0.66 c 0.07 -0.52 0.28 -0.87 0.51 -1.07 c -1.78 -0.2 -3.64 -0.89 -3.64 -3.95 c 0 -0.87 0.31 -1.59 0.82 -2.15 c -0.08 -0.2 -0.36 -1.02 0.08 -2.12 c 0 0 0.67 -0.21 2.2 0.82 c 0.64 -0.18 1.32 -0.27 2 -0.27 c 0.68 0 1.36 0.09 2 0.27 c 1.53 -1.04 2.2 -0.82 2.2 -0.82 c 0.44 1.1 0.16 1.92 0.08 2.12 c 0.51 0.56 0.82 1.27 0.82 2.15 c 0 3.07 -1.87 3.75 -3.65 3.95 c 0.29 0.25 0.54 0.73 0.54 1.48 c 0 1.07 -0.01 1.93 -0.01 2.2 c 0 0.21 0.15 0.46 0.55 0.38 A 8.013 8.013 0 0 0 16 8 c 0 -4.42 -3.58 -8 -8 -8 Z">
+                    </path>
+                </svg>
+            </a>
+
+        </div>
+
+        <!-- 头部搜索框 -->
+        <input class="header-input" type="text" placeholder="Search or jump to... ">
+
+
+        <!-- 头部左侧导航栏 -->
+        <div class="header-left-nav">
+            <ul class="header-left-ul">
+                <li class="header-left-ul-li"><a href="#">Pull requests</a></li>
+                <li class="header-left-ul-li"><a href="#">Issues</a></li>
+                <li class="header-left-ul-li"><a href="#">Marketplace</a></li>
+                <li class="header-left-ul-li"><a href="#">Explore</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+
+</html>
