@@ -1,0 +1,76 @@
+*{
+    padding:0;
+    margin: 0;
+}
+
+.header{
+    background-color: black;
+    height: 60px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header-left{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 左侧导航栏 */
+.header-left-svg {
+    z-index: 10;
+    fill: #fff;
+}
+
+.header-left-svg {
+    display: inline-block;
+    vertical-align: middle;
+    fill: white;
+    z-index: 11;
+}
+
+.header-left-svg:hover {
+    fill: hsla(0, 0%, 100%, .7);
+}
+
+.input-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    margin-left: 20px;
+}
+
+
+.header-input{
+    background-color: hsla(0,0%,100%,.125);
+    outline: none;
+    border-radius: 3px;
+    width: 200px;
+    height: 30px;
+    border: 0;
+}
+
+.input-img{
+    vertical-align: middle;
+    position: absolute;
+    right: 5px;
+}
+
+.header-title{
+    color: white;
+    margin-left: 20px;
+}
+
+.header-right{
+    width: 100px;
+    height: 60px;
+    background-color: rosybrown;
+}

@@ -1,0 +1,47 @@
+.container{
+    height: 1000px;
+    background-color: seashell;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* flex-wrap: wrap; */
+}
+
+.child{
+    width: 200px;
+    height: 200px;
+
+}
+
+.red{
+    background-color: red;
+    align-self: flex-start;
+
+    /* flex-shrink: 2; */
+
+    /* order: 1; */
+}
+
+.blue{
+    background-color: blue;
+    /* flex-shrink: 0; */
+    /* flex-basis: 400px; */
+
+    /* order: 3; */
+
+}
+
+.green{
+    background-color: green;
+    /* flex-shrink: 1; */
+
+    /* order: 3; */
+
+}
+.yellow{
+    background-color: yellow;
+    /* flex-shrink: 0; */
+
+    /* order: 4; */
+}
