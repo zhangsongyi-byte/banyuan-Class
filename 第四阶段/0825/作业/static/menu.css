@@ -4,7 +4,8 @@
     width: 320px;
     height: 650px;
     border: gray;
-    background-color: wheat;
+    /* background-color: wheat; */
+    border: 1px solid gray;
 }
 
 .header{
@@ -74,6 +75,7 @@
 .check{
     display: flex;
     flex-direction: row;
+    cursor: pointer;
 }
 
 
