@@ -1,0 +1,81 @@
+### call apply bind
+
+改变this的指向
+
+```js
+let person = {
+  name: "cjs",
+  function sayName(){
+    console.log(this.name)
+	}
+}
+
+let person2 = {
+  name: "li"
+}
+
+//call:参数调用的时候，参数是紧跟着的
+//apply:参数调用的时候，参数是个数组
+//bind:创建一个函数，来供调用和传参，不是立即调用，参数可以后面再传
+
+
+//**找到数组中的最大值
+//Math.max.apply(null,array)
+
+
+//**使用apply的方式构造一个call函数
+/*
+function fakeCall() {
+	let arr = []
+	for(let i = 1; i < arguments.length;i++){
+		arr.push(arguments[i])
+	}
+	return arguments[0].apply(this,arr)
+}
+*/
+```
+
+### 浅拷贝和深拷贝
+
+```js
+/* 深拷贝 */
+let obj1 = {
+    name: 'cjs',
+    age: 23
+  	obj: {
+  		a: 1
+		}
+}
+
+let obj2 = Object.assign({}, obj1)
+
+obj2.age = 18
+obj2.obj.a = 3
+
+console.log(obj1)
+console.log(obj2)
+/*
+	但这种拷贝只能拷贝一层，被拷贝对象内部的对象拷贝的依然是他的地址
+*/
+
+let obj1 = {
+    name: 'cjs',
+    age: 23,
+    obj: {
+        a: 1
+    }
+}
+let obj2 = JSON.parse(JSON.stringify(obj1))//使用此方法来进行深拷贝，被拷贝对象内部的对象也会重新获得一个新的地址,但是不支持复制转换function等一些特殊格式
+console.log(obj1)
+console.log(obj2)
+//引入lodash库，使用其cloneDeep方法也可以进行深拷贝
+```
+
+### 防抖与节流
+
+```js
+_.throttle(function,timer)//节流：在规定时间内多次触发函数只能有一次生效
+
+_.debounce(function,timer)//防抖：在事件触发n秒之后再执行，如果这n秒内又被触发则重新计时
+```
+
