@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索框</title>
+</head>
+<style>
+    .container{
+        width: 600px;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .input{
+        width: 500px;
+        height: 20px;
+        border: 1px solid black;
+    }
+
+    .container-box{
+        width: 504px;
+        height: 300px;
+        border: 1px solid black;
+        border-top: none;
+        display: none;
+    }
+</style>
+<body>
+    <div class="container">
+        <input type="text" class="input">
+        <div class="container-box"></div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+
+<script>
+    let inputEle=document.getElementsByClassName('input')[0];
+    let historyData=['222','333','999','1234','456','000','9090'];
+    let box=document.getElementsByClassName('container-box')[0];
+
+    inputEle.onkeyup=_.debounce(()=>{
+        let value=inputEle.value
+        // console.log('value===>',value)
+        let data=[]
+        box.innerHTML=''
+        historyData.forEach((item)=>{
+
+            if(_.includes(item,value)){
+                data.push(item)
+                box.style.display='block'
+                let ele=document.createElement('div')
+                let text=document.createTextNode(item)
+                // console.log(item)
+                ele.appendChild(text)
+                box.appendChild(ele)
+            }
+        })
+        if(value===''){
+            box.style.display='none'
+        }
+
+        // console.log(data)
+    },500)
+</script>
+</html>
