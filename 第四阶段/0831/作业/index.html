@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+        姓名
+        <input type="text" class="nameInput"/>
+        </div>
+        
+        <div>
+            性别
+            <select class="genderSelect">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </div>
+        <div>
+
+        年龄
+        <input type="text" class="ageInput"/>
+        </div>
+
+        <div>
+        班级
+        <select class="majorSelect">
+            <option value="web">web</option>
+            <option value="java">java</option>
+        </select>
+        </div>
+    </div>
+</body>
+<script>
+let nameEle=document.getElementsByClassName('nameInput')[0];
+let ageEle=document.getElementsByClassName('ageInput')[0];
+let genderSelect=document.getElementsByClassName('genderSelect')[0];
+let majorSelect=document.getElementsByClassName('majorSelect')[0];
+
+function getGender(){
+    const index=genderSelect.selectedIndex;
+    const gender=genderSelect.options[index];
+    return gender.value;
+}
+
+function getMajor(){
+    const index=majorSelect.selectedIndex;
+    const major=majorSelect.options[index];
+    return major.value;
+}
+
+nameEle.onblur=function(){
+    let value=nameEle.value;
+    if(value){
+        localStorage.setItem('name',value)
+    }
+}
+
+ageEle.onblur=function(){
+    let value=ageEle.value;
+    if(value){
+        localStorage.setItem('age',value)
+    }
+}
+
+window.onload=function(){
+    let nameValue=localStorage.getItem('name');
+    let ageValue=localStorage.getItem('age');
+    let genderValue=localStorage.getItem('gender');
+    let majorValue=localStorage.getItem('major');
+
+
+    if(nameValue){
+        nameEle.value=nameValue
+    }
+
+    if(ageValue){
+        ageEle.value=ageValue
+    }
+
+    if(genderValue){
+        let value=getGender()
+        value=genderValue
+    }
+
+    if(majorValue){
+        let value=getMajor()
+        value=majorValue
+    }
+}
+
+genderSelect.onchange=function(){
+    let value=getGender()
+    if(value){
+        localStorage.setItem('gender',value)
+    }
+}
+
+majorSelect.onchange=function(){
+    let value=getMajor()
+    if(value){
+        localStorage.setItem('major',value)
+    }
+}
+
+
+</script>
+</html>
