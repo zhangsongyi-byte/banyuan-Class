@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // function Dog(name) {
+        //     this.name = name;
+        //     // this.bark=bark;
+        // }
+
+        // Dog.prototype.bark = function () {
+        //     console.log(this.name)
+        // }
+
+        // let dog1 = new Dog('dog1')
+        // let dog2 = new Dog('dog2')
+
+        // console.log(dog1)
+        // console.log(dog1.toString())
+        // console.log(dog1.__proto__.__proto__.__proto__)
+        // console.log(Object.toString())
+
+        function Parent(){
+    this.name='Mike'
+}
+
+function Child(){
+    this.age=22
+}
+
+console.log(Child.prototype)
+
+Child.prototype=new Parent()//Child继承Parent，通过原型，形成链条
+
+let child=new Child()
+
+console.log(child)
+console.log(child.age)
+console.log(child.name)
+
+function Brother(){
+    this.weight=60
+}
+
+Brother.prototype=new Child()
+
+const brother=new Brother()
+
+console.log(brother)
+    </script>
+</body>
+
+</html>
