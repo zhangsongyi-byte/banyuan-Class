@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断性别</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue">
+
+        <div class="man" v-if="inputValue=='男'">
+            <img src="https://by-image.oss-cn-shanghai.aliyuncs.com/vue/avatar/man1.jpg" alt="">
+            <h1>{{manEnter}}</h1>
+        </div>
+        <div class="woman" v-else-if="inputValue=='女'">
+            <img src="https://by-image.oss-cn-shanghai.aliyuncs.com/vue/avatar/woman1.jpg" alt="">
+            <h1>{{womanEnter}}<h1>
+        </div>
+        <div v-else>
+            请输入你的性别
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    /* new一个Vue对象，el就是它的对象，那么在这个对象里面都是可以识别vue的语法的，但是这个对象外部的都是按照html的语法的 */
+    let vm =new Vue({
+        el:'#app',
+        data(){
+            return{
+                inputValue:'',
+                manEnter:'男生入口',
+                womanEnter:'女生入口'
+            }
+        }
+    })
+</script>
+</html>

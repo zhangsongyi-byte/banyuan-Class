@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class和style绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .active{
+            width: 800px;
+            height: 200px;
+            background-color: blanchedalmond;
+        }
+        .div1{
+            background-color: blue;
+            width: 500px;
+            height: 500px;
+        }
+        .container{
+            width: 100px;
+            height: 400px;
+            background-color: blueviolet;
+        }
+
+        .div2{
+            border-radius: 50%;
+            border: 3px solid black;
+
+        }
+        .div3{
+            box-shadow: 0 3px 10px purple;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- class的绑定 -->
+        <!-- <div :class="{active: isActive}"></div>
+        <div :class=" 'div1' "></div>
+        <div class="container"></div> -->
+        <!-- style的绑定 -->
+        <!-- <div :style="{backgroundColor:'red',width:'200px',height:'300px'}"></div> -->
+
+        <div :class="['div1',isRadius ? 'div2' : '',isShadow ? 'div3' : '']"></div>
+    </div>
+</body>
+
+<script>
+    var vm =new Vue({
+        el:'#app',
+        data(){
+            return{
+                isActive:true,
+                isRadius:false,
+                isShadow:true
+            }
+        }
+    })
+</script>
+</html>

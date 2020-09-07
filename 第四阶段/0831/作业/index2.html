@@ -46,81 +46,60 @@
     let genderSelect = document.getElementsByClassName('genderSelect')[0];
     let majorSelect = document.getElementsByClassName('majorSelect')[0];
 
-    let student=document.getElementsByClassName('student')[0];
+    // renderRecord();
 
     nameEle.onblur = function () {
         let value = nameEle.value;
         if (value) {
-            localStorage.setItem('name', value)
+            setRecord('name', value);
         }
     }
 
     ageEle.onblur = function () {
         let value = ageEle.value;
         if (value) {
-            localStorage.setItem('age', value)
+            setRecord('age', value);
         }
     }
 
     genderSelect.onchange = function () {
-        let value = genderSelect.selectedIndex
-        localStorage.setItem('gender', value)
-
+        let index = genderSelect.selectedIndex;
+        let value = genderSelect.options[index].value;
+        setRecord('gender', value);
     }
 
     majorSelect.onchange = function () {
-        let value =  majorSelect.selectedIndex
-        localStorage.setItem('major', value)
+        let index = majorSelect.selectedIndex;
+        let value = majorSelect.options[index].value;
+        setRecord('major', value);
     }
 
+    function setRecord(key, value) {
+        let record = JSON.parse(localStorage.getItem('record'));
+
+        if (!record) {
+            record = {};
+        }
+        record[key] = value;
+        localStorage.setItem('record', JSON.stringify(record));
+    }
+
+    function getRecord() {
+        return JSON.parse(localStorage.getItem('record'));
+    }
+
+    /* 刷新页面时，页面上的信息不会清除 */
+    // function renderRecord(){
     window.onload = function () {
-        let nameValue = localStorage.getItem('name');
-        let ageValue = localStorage.getItem('age');
-        let genderValue = localStorage.getItem('gender');
-        let majorValue = localStorage.getItem('major');
+        let record = getRecord();
 
-        console.log(typeof genderValue)
-
-        if (nameValue) {
-            nameEle.value = nameValue
+        if (record) {
+            nameEle.value = record.name || '';
+            ageEle.value = record.age || '';
+            genderSelect.value = record.gender || '';
+            majorSelect.value = record.major || '';
         }
-
-        if (ageValue) {
-            ageEle.value = ageValue
-        }
-
-        if (genderValue) {
-            genderSelect.selectedIndex = genderValue
-            
-        }
-
-        if (majorValue) {
-            majorSelect.selectedIndex = majorValue
-            
-        }
-
-        if(!Number(majorValue)){
-                majorValue='web'
-            }else{
-                majorValue='java'
-            }
-
-        if(!Number(genderValue)){
-                genderValue='男'
-            }else{
-                genderValue='女'
-            }
-
-        let html=''
-        html='姓名 '+'<span>'+nameValue+'</span> '+'年龄 '+'<span>'+ageValue+'</span> '+'性别 '+'<span>'+genderValue+'</span> '+'学科 '+'<span>'+majorValue+'</span> '
-
-        student.innerHTML=html;
     }
-
-    
-
-    
-
 </script>
 
 </html>

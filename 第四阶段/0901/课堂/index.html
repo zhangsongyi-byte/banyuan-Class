@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Document</title>
+    <style>
+        .container{
+            width: 300px;
+            height: 300px;
+            background-color: turquoise;
+        }
+
+        .child{
+            width: 50px;
+            height: 50px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="child"></div>
+    </div>
+</body>
+<script>
+    // let container=document.getElementsByClassName('container')[0];
+    // let child=document.getElementsByClassName('child')[0];
+    /* 标准DOM事件流的顺序是先捕获后冒泡 */
+    /* 顺序错乱问题：取决于冒泡和捕获的位置，因为child已经是最根部的元素了*/
+    /* 事件冒泡，从内到外 */
+    // child.onclick=function(){
+    //     console.log('bubble child');
+    // }
+
+    // container.onclick=function(){
+    //     console.log('bubble container');
+    // }
+
+    // document.body.onclick=function(){
+    //     console.log('bubble body');
+    // }
+
+    // document.onclick=function(){
+    //     console.log('bubble document');
+    // }
+
+    // window.onclick=function(){
+    //     console.log('bubble window')
+    // }
+    // /* 事件监听器，监听这个div的click事件，事件捕获：从外到内*/
+    // child.addEventListener('click',function(){
+    //     console.log('catch child');
+    //     /* 停止传播，不再捕获 */
+    //     event.stopPropagation();
+    // },true)
+
+    // container.addEventListener('click',function(){
+    //     console.log('catch container')
+    // },true)
+
+    // document.body.addEventListener('click',function(){
+    //     console.log('catch body')
+    // },true)
+
+    // document.addEventListener('click',function(){
+    //     console.log('catch document')
+    // },true)
+
+    // window.addEventListener('click',function(){
+    //     console.log('catch window')
+    // },true)
+
+
+    // container.onclick=function(){
+    //     if(event.target.className==='child'){
+    //         console.log('i am child');
+    //     }
+    // }
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件表达式</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if="1==2">I like apple.</p>
+        <p v-else-if="1==1">I don`t like anything.</p>
+        <p v-else>I like pineapple.</p>
+        <div>
+            <p v-show="1==2">show</p>
+        </div>
+    </div>
+    
+</body>
+<script>
+    var vm= new Vue({
+        el:'#app',
+        data(){
+            return{
+                food1:'apple',
+                food2:'pineapple'
+            }
+        }
+    })
+</script>
+</html>

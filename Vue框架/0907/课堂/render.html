@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    .list{
+        padding: 10px 0;
+
+    }
+    .bgBlue{
+        background-color: blue;
+    }
+    .bgRed{
+        background-color: red;
+    }
+</style>
+<body>
+    <div id="app">
+            <!-- <div :class=['list',index==0?'bgBlue':'',index==1?'bgRed':'']>
+                <div v-for="(item,index) in list">
+                    {{item}}
+                </div>
+            </div> -->
+    </div>
+</body>
+
+<script>
+    var app={
+        /* v-for优先级高于v-if */
+        template:`
+        <div>
+            <div v-for="(item,index) in list">
+            <div :class="['list',index==0?'bgBlue':'',index==1?'bgRed':'']">
+                    {{item.name}}:{{item.gender}}---{{item.price}}
+                    <span v-if="item.price<80">降价销售</span>
+                    <span v-else-if="item.price>80">涨价销售</span>
+                    <span v-else>原价销售</span>
+                </div>
+            </div>
+            </div>
+        `,
+        data(){
+            return{
+                list:[
+                    {name:'lily',gender:'女',price:20},
+                    {name:'jack',gender:'男',price:80},
+                    {name:'lucy',gender:'女',price:25},
+                    {name:'mike',gender:'男',price:90},
+                    {name:'joey',gender:'女',price:100},
+                ]
+            }
+        }
+    }
+    var vm=new Vue({
+        render:h=>h(app)
+        /* 相当于el:'#app' */
+    }).$mount('#app')
+</script>
+</html>

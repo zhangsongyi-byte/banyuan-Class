@@ -47,23 +47,29 @@ function addTask() {
 
     li.appendChild(span);
 
-    li.onclick = function() {
-        this.classList.toggle('checked');
-    }
+    // li.onclick = function() {
+    //     this.classList.toggle('checked');
+    // }
 
     del(); //控制新添加事件的删除
 }
 
 
 
-
+/* 控制事件的绑定，原来是绑定了每一个li元素，现在是通过事件代理，只绑定一个ul */
 function check() {
-    for (var i = 0; i < taskli.length; i++) {
-        taskli[i].onclick = function() {
-            this.classList.toggle('checked');
+    // for (var i = 0; i < taskli.length; i++) {
+        // taskli[i].onclick = function() {
+        //     this.classList.toggle('checked');
+        // }
+
+        task.onclick = function() {
+        if(event.target.tagName.toLowerCase()==='li'){
+            event.target.classList.toggle('checked');
+        }
         }
     }
-}
+// }
 
 function createClose() {
     var span = document.createElement('span');

@@ -44,6 +44,7 @@
 //     console.log(1);
 //     setTimeout(() => {
 //         console.log("timerStart");
+            /* .then的时候才会执行resolve   */
 //         resolve("success");
 //         console.log("timerEnd");
 //     }, 0);

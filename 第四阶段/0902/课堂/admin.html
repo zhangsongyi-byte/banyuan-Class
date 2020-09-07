@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/admin.css">
+</head>
+
+<body class="preload">
+    <div class="header"></div>
+    <div class="admin-container">
+        <div class="left">123</div>
+        <div class="right">
+            <div class="content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table">
+                        <tr>
+                            <td>John</td>
+                            <td>Joe</td>
+                            <td>John@example.com</td>
+                            <td>
+                                <button class="modify">modify</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lily</td>
+                            <td>Leo</td>
+                            <td>Lily@example.com</td>
+                            <td>
+                                <button class="modify">modify</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mike</td>
+                            <td>Moe</td>
+                            <td>Mike@example.com</td>
+                            <td>
+                                <button class="modify">modify</button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="footer">footer</div>
+        </div>
+    </div>
+
+    <div class="admin-modal">
+        <div class="modal-container"></div>
+    </div>
+</body>
+
+<script>
+    let table=document.getElementsByClassName('table')[0];
+    let modal=document.getElementsByClassName('admin-modal')[0];
+    table.onclick=function(){
+        if(event.target.className==='modify'){
+            modal.style.display='flex'
+        }
+    }
+
+    modal.onclick=function(){
+        if(event.target.className!='modal-container'){
+            modal.style.display='none'
+        }
+    }
+</script>
+</html>

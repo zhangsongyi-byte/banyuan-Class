@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成绩单列表</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    /* body{
+        margin-right: 550px;
+    } */
+    .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .title span {
+        width: 12.5%;
+        height: 40px;
+    }
+
+    .list span {
+        width: 12.5%;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: row;
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .score {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .bgGray {
+        background-color: #eee;
+    }
+    .list span{
+        display: flex;
+        align-items: center;
+        height: 50px;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div v-for="(item,index) in title" class="title">
+            <span></span>
+            <span>{{item.name}}</span>
+            <span>{{item.math}}</span>
+            <span>{{item.chinese}}</span>
+            <span>{{item.english}}</span>
+            <span>{{item.geography}}</span>
+            <span>{{item.history}}</span>
+            <span>{{item.allCount}}</span>
+
+
+        </div>
+        <div v-for="(item,index) in list" :class="['list',index==0?'bgGray':'',index==2?'bgGray':'']">
+            <span>
+                <img v-if="index==0" src="./img/第一名.jpg" alt="">
+                <!-- </span>
+            <span > -->
+                <img v-if="index==1" src="./img/第二名.jpeg" alt="">
+                <!-- </span> -->
+                <!-- <span v-if="index==2"> -->
+                <img v-if="index==2" src="./img/第三名.jpeg" alt="">
+            </span>
+            <span>{{item.name}}</span>
+            <!-- <div v-for="(item,index) in item.score" class="score"> -->
+            <!-- <div class="score"> -->
+            <template v-for="item in item.score">
+                <span>{{item.math}}</span>
+                <span>{{item.chinese}}</span>
+                <span>{{item.english}}</span>
+                <span>{{item.geography}}</span>
+                <span>{{item.history}}</span>
+            </template>
+
+            <!-- </div> -->
+
+            <!-- </div> -->
+            <span>{{item.allCount}}</span>
+
+
+        </div>
+
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                list: [
+                    {
+                        name: '肖锋',
+                        score: [{
+                            math: 99, chinese: 100, english: 100, geography: 99, history: 98
+                        }],
+                        allCount: 496
+                    },
+                    {
+                        name: '安澜',
+                        score: [{
+                            math: 90, chinese: 98, english: 89, geography: 96, history: 100
+                        }],
+                        allCount: 473
+                    },
+                    {
+                        name: '路小北',
+                        score: [{
+                            math: 88, chinese: 87, english: 77, geography: 86, history: 78
+                        }],
+                        allCount: 416
+                    },
+                    {
+                        name: '许巍',
+                        score: [{
+                            math: 39, chinese: 40, english: 76, geography: 90, history: 59
+                        }],
+                        allCount: 304
+                    }
+                ],
+                title: [
+                    {
+                        name: '姓名',
+                        math: '数学',
+                        chinese: '语文',
+                        english: '英语',
+                        geography: '地理',
+                        history: '历史',
+                        allCount: '总分'
+                    }
+                ]
+            }
+        }
+    })
+</script>
+
+</html>

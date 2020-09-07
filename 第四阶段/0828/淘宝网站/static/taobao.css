@@ -154,14 +154,12 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 }
 
 .tab{
-    /* margin: 0 125px; */
-    width: 80%;
-    margin: 0 auto;
     height: 35px;
     background-color: coral;
     color: #fff;
     font-weight: 400;
     display: flex;
+    margin: 0 145px;
     line-height: 35px;
     font-size: 14.5px;
 }

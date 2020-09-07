@@ -1,0 +1,109 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.search-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+}
+.search-input{
+    height: 44px;
+    flex: 1;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-right: 1px solid #ddd;
+    padding: 7px 42px 7px 6px;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-button{
+    width: 81px;
+    height: 44px;
+    border: 1px solid black;
+    border-left: none;
+    font-weight: 700;
+    outline: none;
+    color: #38f;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.icon{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.fa-microphone{
+    margin-right: 5px;
+    position: absolute;
+    right: 50px;
+}
+
+.fa-camera{
+    position: absolute;
+    right: 10px;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.img{
+    width: 180px;
+    height: 57px;
+}
+
+.split{
+    width: 100%;
+    height: 10px;
+    background-color: #f8f8f8;
+    margin: 10px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* content */
+.content {
+    margin: 17.34px 16px 5.4px 16px;
+    margin-top: 10.34px;
+}
+
+
+.content-txt-title {
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 400;
+}
+
+.content-txt-link {
+    display: block;
+    padding: 5.4px 0;
+}
+
+.icon-hot {
+    font-size: 13px;
+    color: #ec4345;
+    margin-right: 8px;
+}
+
+.domainName {
+    font-size: 13px;
+    color: #999;
+}

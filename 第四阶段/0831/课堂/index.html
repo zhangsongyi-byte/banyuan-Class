@@ -11,22 +11,44 @@
     <input type="text" class="input">
 </body>
 
+
 <script>
-    // localStorage.setItem('user',JSON.stringify({name:''}))
-    let user = localStorage.getItem('user')
-    let inputEle = document.getElementsByClassName('input')[0];
-    window.onload=function(){
-        let value=localStorage.getItem('inputValue')
-        if(value){
-            inputEle.value=value
-        }
-    }
-    inputEle.onblur = function () {
-        let value = inputEle.value;
-        if (value) {
-            localStorage.setItem('inputValue', value);
-        }
-    }
+    localStorage.setItem('user', JSON.stringify({ name: 'isen' }));
+
+    let user = localStorage.getItem('user');
+
+    console.log(typeof user)
+
+    console.log(JSON.parse(user));
+
+
+    set('user', { name: 'isen', age: 28 });
+
+    console.log(get('user'));
+
+    // localStorage.removeItem('user');
+
+    localStorage.clear();
+
+    localStorage.setItem('test', 'test');
+    sessionStorage.setItem('test', 'test');
+
+
+
+    // let user = localStorage.getItem('user')
+    // let inputEle = document.getElementsByClassName('input')[0];
+    // window.onload=function(){
+    //     let value=localStorage.getItem('inputValue')
+    //     if(value){
+    //         inputEle.value=value
+    //     }
+    // }
+    // inputEle.onblur = function () {
+    //     let value = inputEle.value;
+    //     if (value) {
+    //         localStorage.setItem('inputValue', value);
+    //     }
+    // }
 </script>
 
 </html>
