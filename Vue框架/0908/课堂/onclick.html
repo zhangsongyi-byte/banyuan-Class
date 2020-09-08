@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .div1{
+            width: 500px;
+            height: 500px;
+            background-color: #f3f3f3;
+        }
+        .div2{
+            width: 100px;
+            height: 100px;
+            background-color: rebeccapurple;
+        }
+        .div3{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="doThis">button1</button><br>
+        <!-- 内联语句 -->
+        <button v-on:click="doThis2('zhang')">button2</button><br>
+        <button @click="doThis">button3</button><br>
+        <!-- 点击只会触发一次的按钮 -->
+        <button @click.once="doOnce">button4</button>
+
+        <!-- 阻止冒泡行为 -->
+        <div class="div1" @click="clickDiv1">
+            <div class="div2" @click.stop="clickDiv2">弹出框</div>
+            <div class="div3" @click.stop="clickDiv3">输出</div>
+        </div>
+
+
+        <!-- 阻止默认行为，没有表达式 -->
+        <a href="http://baidu.com" @click.prevent>链接</a>
+
+        <!-- 回车键 -->
+        <input type="text" @keyup.enter="onEnter" v-model="inputValue">
+        <input type="text" @keyup.13="onEnter" v-model="inputValue">
+
+
+    </div>
+
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data(){
+                return{
+                    inputValue:''
+                }
+            },
+            methods: {
+                doThis(){
+                    console.log('do this');
+                },
+                doThis2(name){
+                    console.log('name====>',name)
+                },
+                clickDiv1(){
+                    console.log('this is div1')
+                },
+                clickDiv2(){
+                    alert('you click the div2')
+                },
+                clickDiv3(){
+                    console.log('this is div3')
+                },
+                onEnter(){
+                    console.log('此处应调用接口','   请求参数是'+this.inputValue)
+                },
+                doOnce(){
+                    alert('我只会执行一次')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

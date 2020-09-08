@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .container {
+            width: 500px;
+            height: 700px;
+            border: 1px solid #f3f3f3;
+            box-shadow: 0 3px 10px gray;
+            margin: 0 auto;
+        }
+
+        .list {
+            width: 80%;
+            height: 40px;
+            background-color: #f3f3f3;
+            padding: 10px;
+            margin: 30px 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .price {
+            margin-right: 10px;
+        }
+
+        .count-box {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .count {
+            padding: 0 10px;
+            background-color: black;
+            color: white;
+        }
+
+        .decBtn {
+            border-radius: 15px 0 0 15px;
+            color: white;
+            background-color: black;
+            border: none;
+            outline: none;
+        }
+
+        .incBtn {
+            border-radius: 0 15px 15px 0;
+            border: none;
+            color: white;
+            background-color: black;
+            outline: none;
+        }
+
+        .priceAll {
+            margin-right: 30px;
+            width: 80%;
+            height: 30px;
+            /* background-color: blanchedalmond; */
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: left;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div v-for="(item,index) in list" class="list">
+                <div class="left">{{item.name}}</div>
+                <div class="right">
+                    <div class="price">￥: {{item.price}}</div>
+                    <div class="count-box">
+                        <button class="decBtn" @click="decreaseBtn(index)">-</button>
+                        <div class="count">{{item.count}}</div>
+                        <button class="incBtn" @click="increaseBtn(index)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="priceAll">总价 ￥：{{allPrice()}} </div>
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    list: [
+                        {
+                            name: '香蕉',
+                            price: 10,
+                            count: 1
+                        },
+                        {
+                            name: '苹果',
+                            price: 20,
+                            count: 1
+                        },
+                        {
+                            name: '榴莲',
+                            price: 30,
+                            count: 1
+                        },
+                        {
+                            name: '葡萄',
+                            price: 50,
+                            count: 1
+                        }
+                    ]
+                }
+            },
+            methods: {
+                allPrice() {
+                    var sum = 0
+                    for (var i = 0; i < this.list.length; i++) {
+                        var price = this.list[i].price
+                        var count = this.list[i].count
+                        sum += price * count
+                    }
+                    return sum
+                },
+                decreaseBtn(index) {
+                    if(this.list[index].count<=1){
+                        alert('不能少于1个')
+                    }else{
+
+                        this.list[index].count--
+                    }
+                },
+                increaseBtn(index) {
+                    if(this.list[index].count>=4){
+                        alert('不能多于4个')
+                    }else{
+                        this.list[index].count++
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

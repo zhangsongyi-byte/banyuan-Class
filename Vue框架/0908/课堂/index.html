@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue"> 
+        <p>{{list}}</p>
+    </div>
+
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data(){
+                return{
+                    inputValue:'',
+                    list:[{
+                        name:'jack',age:23,abc:[{a:1,aa:'ppp'}],b:'name'
+                    }],
+                }
+            },
+            watch: {
+                inputValue:{
+                    handler(newV,oldV){
+                        console.log("当前值======>",newV)
+                        console.log("旧值======>",oldV)
+                    },
+                    immediate:true
+                },
+                list:{
+                    handler(newV,oldV){
+                        console.log('list')
+                    },
+                    deep: true
+                },
+                "list[0].abc":{
+                    handler(newV,oldV){
+                        console.log('abc变化了')
+                    },
+                    deep:true
+                }
+
+            },
+        })
+    </script>
+</body>
+</html>

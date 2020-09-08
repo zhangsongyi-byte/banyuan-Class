@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <!-- 监听器 -->
+        <input type="text" v-model="inputValue">
+        <p>{{JSON.stringify(obj)}}</p>
+    </div>
+
+
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data(){
+                return{
+                    inputValue: '',
+                    obj: {
+                        a: {
+                            aa: {
+                                aaa: {
+                                    name: 'aaaaa'
+                                }
+                            }
+                        },
+                        b: {
+                            bb: {
+                                bbb: {
+                                    name: 'bbbbb'
+                                }
+                            }
+                        }
+                    },
+                    list:[
+                    {name:'lily',age:20},
+                    {name:'jack',age:30},
+                    {name:'will',age:23},
+                ]
+                }
+            },
+            watch: {
+                // inputValue(newV, oldV) {
+                //     console.log('now value======>', newV)
+                //     console.log('old value======>', oldV)
+                // },
+                obj: {
+                    handler(newV, oldV) {
+                        console.log('now value======>', newV)
+                        console.log('old value======>', oldV)
+                    },
+                    /* 深层监听 */
+                    deep:true
+                },
+                "obj.a": {
+                    handler(newV, oldV) {
+                        console.log('now value======>', newV)
+                        console.log('obj.a变化了')
+                    },
+                    /* 深层监听 */
+                    deep:true
+                },
+                "obj.a.aa": {
+                    handler(newV, oldV) {
+                        console.log('now value======>', newV)
+                        console.log('obj.aa变化了')
+                    },
+                    /* 深层监听 */
+                    deep:true
+                },
+                "obj.a.aa.aaa": {
+                    handler(newV, oldV) {
+                        console.log('now value======>', newV)
+                        console.log('obj.aaa变化了')
+                    },
+                    /* 深层监听 */
+                    deep:true
+                },
+                inputValue:{
+                    handler(newV, oldV) {
+                        console.log('now value======>', newV)
+                        console.log('old value======>', oldV)
+                    },
+                    /* 初次是否监听 */
+                    immediate:true
+                }
+
+            },
+        })
+    </script>
+</body>
+</html>

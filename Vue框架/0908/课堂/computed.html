@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            {{reverseMsg}}
+        </div>
+        <div>
+            {{fullName}}
+        </div>
+
+        <button @click="hideDiv">显示隐藏</button>
+
+        <div :style="{display:isDisplay?'block':'none'}">
+            香蕉单价是：{{bananaPrice}}
+            <br>
+            购买数量是：<input v-model="count">
+            <br>
+            总价是：{{returnPrice()}}
+        </div>
+
+        
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    msg: 'hello vue',
+                    firstName: '姓',
+                    lastName: '名',
+                    bananaPrice: 30,
+                    count: '',
+                    isDisplay: true
+                }
+            },
+            computed: {
+                reverseMsg() {
+                    return this.msg.split('').reverse().join('')
+                },
+                fullName() {
+                    return this.firstName + this.lastName
+                }
+            },
+            methods: {
+                returnPrice() {
+                    let allPrice = this.bananaPrice * this.count
+                    return allPrice
+                },
+                hideDiv() {
+                    this.isDisplay = !this.isDisplay
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

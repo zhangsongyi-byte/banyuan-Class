@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成绩单列表</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    /* body{
+        margin-right: 550px;
+    } */
+    .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .title span {
+        width: 12.5%;
+        height: 40px;
+    }
+
+    .list span {
+        width: 12.5%;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: row;
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .score {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .bgGray {
+        background-color: #eee;
+    }
+    .list span{
+        display: flex;
+        align-items: center;
+        height: 50px;
+    }
+</style>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        template:`
+            <div>
+                <p v-text="text"></p>
+                <p v-html="htmlData"></p>
+                <p>{{dealCount()}}</p>
+
+                <div v-for="(item,index) in title" class="title">
+            <span></span>
+            <span>{{item.name}}</span>
+            <span>{{item.math}}</span>
+            <span>{{item.chinese}}</span>
+            <span>{{item.english}}</span>
+            <span>{{item.geography}}</span>
+            <span>{{item.history}}</span>
+            <span>{{item.allCount}}</span>
+
+
+        </div>
+        <div v-for="(item,index) in list" :class="['list',index==0?'bgGray':'',index==2?'bgGray':'']" @click="studentAlert(item)">
+            <span>
+
+                <!-- </span>
+            <span > -->
+
+                <!-- </span> -->
+                <!-- <span v-if="index==2"> -->
+
+            </span>
+            <span>{{item.name}}</span>
+            <!-- <div v-for="(item,index) in item.score" class="score"> -->
+            <!-- <div class="score"> -->
+            <template v-for="item in item.score">
+                <span>{{item.math}}</span>
+                <span>{{item.chinese}}</span>
+                <span>{{item.english}}</span>
+                <span>{{item.geography}}</span>
+                <span>{{item.history}}</span>
+            </template>
+
+            <!-- </div> -->
+
+            <!-- </div> -->
+            <span>{{item.allCount}}</span>
+
+
+        </div>
+            </div>
+        `,
+        data() {
+            return {
+                text:'zhangsongyi',
+                htmlData:'<span>这是span标签</span>',
+                data:10000,
+                list: [
+                    {
+                        name: '肖锋',
+                        score: [{
+                            math: 99, chinese: 100, english: 100, geography: 99, history: 98
+                        }],
+                        allCount: 496
+                    },
+                    {
+                        name: '安澜',
+                        score: [{
+                            math: 90, chinese: 98, english: 89, geography: 96, history: 100
+                        }],
+                        allCount: 473
+                    },
+                    {
+                        name: '路小北',
+                        score: [{
+                            math: 88, chinese: 87, english: 77, geography: 86, history: 78
+                        }],
+                        allCount: 416
+                    },
+                    {
+                        name: '许巍',
+                        score: [{
+                            math: 39, chinese: 40, english: 76, geography: 90, history: 59
+                        }],
+                        allCount: 304
+                    }
+                ],
+                title: [
+                    {
+                        name: '姓名',
+                        math: '数学',
+                        chinese: '语文',
+                        english: '英语',
+                        geography: '地理',
+                        history: '历史',
+                        allCount: '总分'
+                    }
+                ]
+            }
+        },
+        created(){
+            console.log(this)
+            console.log('get Data====>',this.htmlData)
+            this.fun1()
+            // this.dealCount()
+            // this.fun2()
+        },
+        methods: {
+            fun1(){
+                let fun2Ran=this.fun2()
+                console.log(fun2Ran)
+                let result=fun2Ran * this.data
+                console.log('result=====>',result)
+            },
+            fun2(){
+                let ran= Math.random()
+                console.log('ran====>',ran)
+                return ran
+            },
+            dealCount(){
+                let time=new Date();
+                let y=time.getFullYear();
+                let m=time.getMonth()+1;
+                let d=time.getDate();
+                let h=time.getHours();
+                let min=time.getMinutes();
+                let s=time.getSeconds();
+                console.log(y+'年'+m+'月'+d+'日'+h+'时'+min+'分'+s+'秒')
+                return y+'年'+m+'月'+d+'日'+h+'时'+min+'分'+s+'秒'
+            },
+            studentAlert(ele){
+                // alert(JSON.stringify(ele))
+                // console.log(ele.name)
+                let score=ele.score
+                console.log(score)
+                let math=score[0].math
+                let chinese=score[0].chinese
+                let english=score[0].english
+                let geography=score[0].geography
+                let history=score[0].history
+
+                let reScore='数学: '+math+'语文: '+chinese+'英语: '+english+'地理: '+geography+'历史: '+history
+
+                alert('name: '+ele.name+'\n'+'score: '+reScore+'\n'+'allCount: '+ele.allCount)
+            }
+        },
+    })
+</script>
+
+</html>
