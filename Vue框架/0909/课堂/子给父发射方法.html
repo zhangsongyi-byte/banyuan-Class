@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .books{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .add{
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+
+    <script>
+        
+
+        let booksItem={
+            template:`
+                <div>
+                    <div class="books">
+                        <p>{{item.name}}</p>
+                        <p>{{item.price}}</p>
+                        <p>{{item.count}}</p>
+                        <p class="add" @click="addCount">+</p>
+                    </div>
+                </div>
+            `,
+            props:{
+                item:{
+                    type:Object
+                },
+                index:{
+                    type:Number
+                }
+            },
+            methods: {
+                addCount(){
+                    console.log('增加一个'+this.item.name+'数量')
+                    this.$emit('add',{
+                        ind:this.index
+                    })
+                }
+            },
+        }
+
+        let vueApp = {
+            data() {
+                return {
+                    list: [1, 2, 3, 4],
+                    books:[
+                        {name:'红楼梦',price:80,count:1},
+                        {name:'西游记',price:60,count:1},
+                        {name:'三国',price:70,count:1},
+                        {name:'水浒传',price:90,count:1},
+                    ]
+                }
+            },
+            template: `
+                <div class="container">
+                    <div v-for="(obj,index) in books">
+                        <book-item :item="obj" :index="index" @add="addFun"></book-item>
+                    </div>
+                </div>
+            `,
+            components: {
+                'book-item':booksItem
+            },
+            methods: {
+                addFun(data){
+                    console.log('父页面打印===>',data)
+                    let father=this.books[data.ind]
+                    father.count++
+                    console.log(father.count)
+
+                }
+            },
+        }
+
+        new Vue({
+            render: h => h(vueApp)
+        }).$mount('#app')
+    </script>
+</body>
+</html>

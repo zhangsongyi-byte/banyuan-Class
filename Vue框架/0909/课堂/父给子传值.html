@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+
+    <script>
+        let proItem = {
+            template: `
+                <div>
+                    <p>商品名</p>
+                    <p>10元</p>
+                </div>
+            `
+        }
+        let proItem2 = {
+            template: `
+            <div>
+                <div  :style="{display:'flex',flexDirection:'row'}">
+                    <p>全局的----商品名</p>
+                    <p :style="{marginLeft:'20px'}">10元</p>
+                    </div>
+                    </div>
+                    `
+        }
+        /* 全局组件 */
+        Vue.component('global-pro-item', proItem2)
+
+        let booksItem={
+            template:`
+                <div :style="{display:'flex',flexDirection:'row'}">
+                    <p>{{name}}====></p>
+                    <p>{{price}}元</p>
+                    <h2>{{abc}}</h2>
+
+                    
+                </div>
+            `,
+            props:['item'],
+            // props:['name','price']
+            props:{
+                name:{
+                    type:String,
+                    require:true
+                },
+                price:{
+                    type:Number,
+                    require:true
+                },
+                abc:{
+                    type:String,
+                    default:'默认值',
+                    validator(value){
+                        return ['success','warning','danger'].indexOf(value)!=-1
+                    }
+                }
+            }
+        }
+
+        let vueApp = {
+            data() {
+                return {
+                    list: [1, 2, 3, 4],
+                    books:[
+                        {name:'红楼梦',price:80},
+                        {name:'西游记',price:60},
+                        {name:'三国',price:70},
+                        {name:'水浒传',price:90},
+                    ]
+                }
+            },
+            template: `
+                <div class="container">
+                    <div v-for="item in list">
+                        <pro-item></pro-item>
+                    </div>
+                    <div v-for="item in list">
+                        <global-pro-item></global-pro-item>
+                    </div>
+
+                    <div v-for="obj in books">
+                        <book-item :name="obj.name" :price="obj.price" :abc="'hello'"></book-item>
+                        <book-item :item="item"></book-item>
+                    </div>
+                </div>
+
+            `,
+            components: {
+                'pro-item': proItem,
+                'book-item':booksItem
+            }
+        }
+
+        new Vue({
+            render: h => h(vueApp)
+        }).$mount('#app')
+    </script>
+</body>
+</html>

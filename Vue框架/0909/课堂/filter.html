@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>{{msg | format | formatChina}}</h1>
+            <h1>{{comA('北京烤鸭')}}</h1>
+            <h2>局部：{{time | formatTime}}</h2>
+            <h2>全局：{{time | glaobalFormatTime}}</h2>
+        </div>
+    </div>
+
+    <script>
+        /* 全局过滤器 */
+        Vue.filter('glaobalFormatTime',(value)=>{
+            if (!value) {
+                return ''
+            }
+            let time = new Date(value)
+            let y = time.getFullYear()
+            let m = time.getMonth()
+            let d = time.getDate()
+            let h = time.getHours()
+            let min = time.getMinutes()
+            let s = time.getSeconds()
+            return y + '年' + m + '月' + d + '日' + h + '时' + min + '分' + s + '秒'
+        })
+        var vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    msg: '北京烤鸭',
+                    time: new Date().getTime()
+                }
+            },
+            filters: {
+                format(value) {
+                    return '来自北京的:' + value
+                },
+                formatChina(value) {
+                    return '是中国的' + value
+                },
+                formatTime(value) {
+                    let time = new Date(value)
+                    let y = time.getFullYear()
+                    let m = time.getMonth()
+                    let d = time.getDate()
+                    let h = time.getHours()
+                    let min = time.getMinutes()
+                    let s = time.getSeconds()
+                    return y + '年' + m + '月' + d + '日' + h + '时' + min + '分' + s + '秒'
+                }
+            },
+            computed: {
+                comA() {
+                    return function (value) {
+                        return '计算属性：' + value
+                    }
+                }
+
+            },
+        })
+    </script>
+</body>
+
+</html>

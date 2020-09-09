@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    .header-container{
+        width: 100%;
+        height: 50px;
+        background-color: brown;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+
+    <script>
+        let appHeader={
+            template:`
+                <div class="header-container">
+                    <div>Back</div>
+                    <div>
+                        <slot name="slotCenter"></slot>
+                    </div>
+                    <div>
+                        <slot name="slotRight"></slot>
+                    </div>
+                </div>
+            `,
+            props:{}
+        }
+
+        let news={
+            template:`
+                <div>
+                    <app-header>
+                        <div slot="slotRight">分享</div>
+                    </app-header>
+                </div>
+            `,
+            components:{
+                'app-header':appHeader
+            }
+        }
+
+        let kefu={
+            template:`
+                <div>
+                    <app-header>
+                        <div slot="slotCenter">客服中心</div>
+                    </app-header>
+                </div>
+            `,
+            components:{
+                'app-header':appHeader
+            }
+        }
+
+        let vueApp = {
+            data() {
+                return {
+                    list: [1, 2, 3, 4],
+                    books:[
+                        {name:'红楼梦',price:80},
+                        {name:'西游记',price:60},
+                        {name:'三国',price:70},
+                        {name:'水浒传',price:90},
+                    ]
+                }
+            },
+            template: `
+                <div>
+                    <news></news><br>
+                    <kefu></kefu>
+                </div>
+
+            `,
+            components: {
+                news,kefu
+            }
+        }
+
+        new Vue({
+            render: h => h(vueApp)
+        }).$mount('#app')
+    </script>
+</body>
+</html>
