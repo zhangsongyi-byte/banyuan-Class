@@ -26,8 +26,14 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 10px 20px;
+        padding: 10px 50px;
+        background-color: white;
         box-shadow: 2px 6px 10px #eee;
+        width: 1340px;
+        height: 80px;
+        position: fixed;
+        top: 0;
+        z-index: 99;
     }
     .ul{
         display: flex;

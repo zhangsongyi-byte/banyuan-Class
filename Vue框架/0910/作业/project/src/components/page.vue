@@ -62,7 +62,7 @@ export default {
         flex-wrap: wrap;
         justify-content: space-between;
         margin: auto;
-        margin-top: 100px;
+        margin-top: 150px;
         margin-bottom: 50px;
     }
 </style>

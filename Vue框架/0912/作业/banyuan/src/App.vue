@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <Page></Page>
+    <Left></Left>
+    <Header></Header>
+    
+  
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import Page from "./components/page"
+import Header from "./components/header"
+import Left from "./components/left"
 
 export default {
   name: 'App',
-  components: {
-    Page
+  data(){
+    return{
+    }
+  },
+  components:{
+    Header,
+    Left
   }
 }
 </script>
@@ -22,9 +30,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 body{
   margin: 0;
-  padding: 0;
+  padding:0;
 }
+
 </style>

@@ -120,9 +120,9 @@
         <div class="pro-right">
             <p class="pro-price">￥：{{ item.price }}</p>
             <div class="btn-box">
-                <button class="btn1" @click=remove(index)>-</button>
+                <button class="btn1" @click=remove>-</button>
                 <input type="text" v-model="item.count" class="pro-num" />
-                <button class="btn2" @click=add(index)>+</button>
+                <button class="btn2" @click=add>+</button>
             </div>
             <slot name="slotImg"></slot>
         </div>

@@ -27,7 +27,7 @@ export default {
 
 .title{
     width: 397px;
-    height: 50px;
+    height: 60px;
     border: 2px solid #eee;
     display: flex;
     align-items: center;
@@ -37,10 +37,13 @@ export default {
     display: flex;
     flex-direction: column;
     width: 400px;
-    height: 370px;
+    /* height: 370px; */
 }
 
 .text,.time{
     margin-top: 20px;
+}
+.text{
+    margin-bottom: 20px;
 }
 </style>
