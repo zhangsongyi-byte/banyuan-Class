@@ -1,0 +1,117 @@
+$font-size: 40px;
+$color: #f97197;
+$side: left;
+
+    // .sass-container{
+    //     width: 50vw;
+    //     height: 100vh;
+    //     margin: 0 auto;
+    //     display: flex;
+    //     flex-direction: column;
+    //     // justify-content: center;
+    //     align-items: center;
+    // }
+
+    .hhh1{
+        font-size: $font-size;
+        color: $color;
+    }
+
+    .div{
+        display: flex;
+    }
+    .div h1{
+        color: red;
+    }
+
+    .div h2{
+        color: blue;
+    }
+
+    .div h3{
+        color: purple;
+    }
+
+    .box1{
+        width: 200px;
+        height: 200px;
+        border: 1px solid gray;
+    }
+    /* sass继承 */
+    .box2{
+        @extend .box1;
+        background-color: $color;
+        color: lighten(green, 30%);
+    }
+
+    /* sass混入 */
+    @mixin left1{
+        margin-left: 40px;
+    }
+    .box1{
+        @include left1;
+    }
+
+    /* sass混入传值 */
+    @mixin left2($val:50px){
+        margin-left: $val;
+    }
+    .box2{
+        @include left2;
+    }
+
+    /* 条件语句 */
+    .box3{
+        width: 100px;
+        height: 100px;
+        background-color: purple;
+        @if 5>3 {
+            border: 2px solid #333;
+        }
+        @if 1!=2 {
+            border-radius: 15px;
+        }
+    }
+
+    /* for循环 */
+
+    // @for $i from 1 to 6{
+    //     .border-#{$i}{
+    //         width: #{$i}00px;
+    //         height: #{$i}2px;
+    //         border: #{$i}0px solid gray;
+    //         margin-bottom: 20px;
+    //     }
+    // }
+
+    /* while循环 */
+    // $y:5;
+    // @while $y>0{
+    //     .border-#{$y}{
+    //         width: #{$y}00px;
+    //         height: #{$y}0px;
+    //         background-color: purple;
+    //     }
+    //     $y: $y - 1;
+    // }
+
+    /* each循环 */
+    @each $z in 1,2,3,4,5{
+        .border-#{$z} {
+            width: #{$z}3px;
+            height: #{$z}5px;
+            background-color: blue;
+            margin-bottom: #{$z}2px;
+        }
+    }
+
+    /* 定义方法 */
+    @function returnWidth($wid){
+        @return $wid*3
+    }
+
+    .box6{
+        width: returnWidth(30px);
+        height: returnWidth(50px);
+        background-color: yellowgreen;
+    }
