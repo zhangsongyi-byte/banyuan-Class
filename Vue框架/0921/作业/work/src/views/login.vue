@@ -23,20 +23,26 @@ export default {
   },
   methods: {
     jumpToUser(){
-      let name=this.name
-      let age=this.age
-      let gender=this.gender
-      let school=this.school
-      this.list={
-        name:name,
-        age:age,
-        gender:gender,
-        school:school
-      }
-      this.$store.commit('user/getList',this.list)
-      this.$router.push({
-        name:'User'
-      })
+      if(!this.name){
+                alert('请输入姓名')
+            }else if(!this.age){
+                alert('请输入年龄')
+            }else if(!this.gender){
+                alert('请输入性别')
+            }else if(!this.school){
+                alert('请输入学校')
+            }else{
+              this.list={
+                  name:this.name,
+                  age:this.age,
+                  gender:this.gender,
+                  school:this.school
+                }
+                this.$store.commit('user/getList',this.list)
+                this.$router.push({
+                  name:'User'
+                })
+            }
     }
   },
   

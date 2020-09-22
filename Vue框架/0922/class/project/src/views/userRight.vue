@@ -1,12 +1,5 @@
 <template>
-    <div class="container">
-        <div class="left">
-            <div class="left-title">姓名：{{list.name}}</div>
-            <div class="left-title">年龄：{{list.age}}</div>
-            <div class="left-title">性别：{{list.gender}}</div>
-            <div class="left-title">学校：{{list.school}}</div>
-        </div>
-        <div class="right">
+    <div class="right">
             <h3>个人信息</h3>
             <div class="right-container">
                 <h4>信息修改</h4>
@@ -27,10 +20,10 @@
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
     name:'user',
     data() {
@@ -43,7 +36,7 @@ export default {
         }
     },
     created() {
-        let data=this.$store.state.user.obj
+        let data=this.user
         console.log(data)
         this.name=data.name
         this.age=data.age
@@ -51,29 +44,24 @@ export default {
         this.school=data.school
         this.list={name:this.name,age:this.age,gender:this.gender,school:this.school}
     },
+    computed: {
+        ...mapState({
+            "user":state=>state.user
+        })
+    },
     methods: {
+        ...mapActions([
+            'updateInfo'
+        ]),
         save(){
             this.list={name:this.name,age:this.age,gender:this.gender,school:this.school}
+            this.updateInfo(this.list)
         }
     },
 }
 </script>
 
 <style lang="scss">
-.container{
-    .left{
-        width: 200px;
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        background-color: peachpuff;
-
-        .left-title{
-            padding: 50px 20px;
-            
-        }
-    }
     .right{
         position: fixed;
         top: 0;
@@ -113,6 +101,4 @@ export default {
             }
         }
     }
-}
-    
 </style>
