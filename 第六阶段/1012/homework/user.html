@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<style>
+    .userInfo{
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+</style>
+<body>
+    <div id="example"></div>
+</body>
+<script type="text/babel">
+    class App extends React.Component{
+        constructor(){
+            super();
+
+            this.state={
+                name:'',
+                age:'',
+                major:'',
+                nameFlag:false,
+                ageFlag:false,
+                majorFlag:false
+            }
+        }
+
+        changeName=(e)=>{
+            this.setState({
+                name:e.target.value
+            })
+        }
+
+        checkName=(e)=>{
+            let pattern=/[\u4E00-\u9FA5]/g
+            if(!pattern.test(e.target.value)){
+                alert('用户名格式有误')
+            }
+            this.setState({
+                nameFlag:true
+            })
+        }
+
+        changeAge=(e)=>{
+            this.setState({
+                age:e.target.value
+            })
+        }
+
+        checkAge=(e)=>{
+            if(!(/^[0-9]+$/.test(e.target.value ))||e.target.value<0 || e.target.value > 120){
+                alert('年龄格式有误')
+            }
+            this.setState({
+                ageFlag:true
+            })
+        }
+
+        changeMajor=(e)=>{
+            this.setState({
+                major:e.target.value
+            })
+        }
+
+        checkMajor=(e)=>{
+            if(e){
+                this.setState({
+                    majorFlag:true
+                })
+            }
+        }
+
+        print=()=>{
+            if(this.checkName&&this.checkMajor&&this.checkAge){
+                console.log('姓名 '+this.state.name)
+                console.log('年龄 '+this.state.age)
+                console.log('主修课程 '+this.state.major)
+            }
+        }
+
+
+        render(){
+            return(
+                <div className="userInfo">
+                    <div>
+                        姓名：<input type="text" value={ this.state.name } onChange={ this.changeName } onBlur={ this.checkName}/>
+                    </div>
+                    {this.state.name}
+                    <div>年龄：<input type="text" value={ this.state.age } onChange={ this.changeAge } onBlur={ this.checkAge}/></div>
+                    {this.state.age}
+                    <div>主修课程：<input type="text" value={ this.state.major } onChange={ this.changeMajor } onBlur={ this.checkMajor}/></div>
+                    {this.state.major}
+                    <div><button disabled={!(this.state.nameFlag&&this.state.ageFlag&&this.state.majorFlag)} onClick={ this.print }>登录</button></div>
+                    
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <App/>,
+        document.getElementById('example')
+    )
+</script>
+</html>

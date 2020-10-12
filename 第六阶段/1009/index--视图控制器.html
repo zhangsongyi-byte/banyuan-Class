@@ -1,0 +1,33 @@
+<div>
+    <p>你好，<span id="nickName">123</span></p>
+
+    <button onclick="test()">test</button>
+</div>
+
+<script>
+    /* 视图控制器 */
+    // var userInfo={};
+    // Object.defineProperty(userInfo,"nickName",{
+    //     get:function(){
+    //         return document.getElementById('nickName').innerHTML;
+    //     },
+    //     set:function(nick){
+    //         document.getElementById('nickName').innerHTML=nick;
+    //     }
+    // })
+
+    // function test(){
+    //     userInfo.nickName='test';
+    // }
+
+    var x=1990;
+    let obj={
+        x:22,
+        say:()=>{
+            console.log(this.x);
+        }
+    }
+    obj.say();
+
+    
+</script>

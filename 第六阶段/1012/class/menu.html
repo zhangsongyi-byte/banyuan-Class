@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        .list {
+            width: 80%;
+            height: 40px;
+            background-color: #f3f3f3;
+            padding: 10px;
+            margin: 30px 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .price {
+            margin-right: 10px;
+        }
+
+        .count-box {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .count {
+            padding: 0 10px;
+            background-color: black;
+            color: white;
+        }
+
+        .decBtn {
+            border-radius: 15px 0 0 15px;
+            color: white;
+            background-color: black;
+            border: none;
+            outline: none;
+        }
+
+        .incBtn {
+            border-radius: 0 15px 15px 0;
+            border: none;
+            color: white;
+            background-color: black;
+            outline: none;
+        }
+
+        .priceAll {
+            margin-right: 30px;
+            width: 80%;
+            height: 30px;
+            /* background-color: blanchedalmond; */
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: left;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="example">
+
+    </div>
+</body>
+
+<script type="text/babel">
+    class MenuElements extends React.Component{
+        constructor(){
+            super()
+        }
+
+        renderChildren(){
+            const list=[
+            {
+                name: '香蕉',
+                price: 10,
+                count: 1
+            },
+            {
+                name: '苹果',
+                price: 20,
+                count: 1
+            },
+            {
+                name: '榴莲',
+                price: 30,
+                count: 1
+            },
+            {
+                name: '葡萄',
+                price: 50,
+                count: 1
+            }
+            ];
+            const eles=list.map((item)=>{
+                return(
+                    <Child key={ uuidv4() } num={ item }></Child>
+                )
+            })
+
+            return eles;
+        }
+        render(){
+            const eles=[
+                <h1>1</h1>,
+                <h1>2</h1>
+            ]
+            return(
+                <div>
+                    <div>{ this.renderChildren() }</div>
+                </div>
+            )
+        }
+    }
+
+    class Child extends React.Component{
+        constructor(){
+            super()
+        }
+        render(){
+            return(
+                <div className="list">
+                    <div className="left">{this.props.num.name}</div>
+                    <div className="right">
+                    <div className="price">￥: {this.props.num.price}</div>
+                    <div className="count-box">
+                        <button className="decBtn">-</button>
+                        <div className="count">{this.props.num.count}</div>
+                        <button className="incBtn">+</button>
+                    </div>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <MenuElements/>,
+        document.getElementById('example')
+    )
+</script>
+</html>

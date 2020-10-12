@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<style>
+    .list {
+            width: 80%;
+            height: 40px;
+            background-color: #f3f3f3;
+            padding: 10px;
+            margin: 30px 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .price {
+            margin-right: 10px;
+        }
+
+        .count-box {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .count {
+            padding: 0 10px;
+            background-color: black;
+            color: white;
+        }
+
+        .decBtn {
+            border-radius: 15px 0 0 15px;
+            color: white;
+            background-color: black;
+            border: none;
+            outline: none;
+        }
+
+        .incBtn {
+            border-radius: 0 15px 15px 0;
+            border: none;
+            color: white;
+            background-color: black;
+            outline: none;
+        }
+
+        .priceAll {
+            margin-right: 30px;
+            width: 80%;
+            height: 30px;
+            /* background-color: blanchedalmond; */
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: left;
+            align-items: center;
+        }
+</style>
+<body>
+    <div id="example"></div>
+</body>
+<script type="text/babel">
+    class App extends React.Component{
+        constructor(){
+            super();
+
+            this.state={
+                menu:[
+                        {id:'dcaf0261-059a-43ea-8d08-cf90600bca02',name: '香蕉', price: 10, count: 3},
+                        {id:'65a909e8-55c9-4695-a46b-bac2c7abe3be',name: '苹果', price: 20, count: 1},
+                        {id:'8b6b1c29-c1bc-49a3-824b-6d5950528b9b',name: '榴莲', price: 30, count: 4},
+                        {id:'4662f88b-9087-41a0-8e87-2fe23cca2e0a',name: '葡萄', price: 50, count: 1}
+                    ]
+            }
+        }
+
+        addItem = (id)=>{
+            let menu = this.state.menu.map((item)=>{
+
+                    if(item.id === id){
+                        if(item.count>=6){
+                            alert('不能再增加了哦')
+                            return item;
+                        }else{
+                            return { ...item , count: item.count+1}
+                        }
+                    }else{
+                        return item;
+                    }
+            })
+
+            this.setState({
+                menu
+            });
+        }
+
+        cutItem=(id)=>{
+            let menu = this.state.menu.map((item)=>{
+                if(item.id === id){
+                    if(item.count<=1){
+                        alert('不能再减少了哦')
+                        return item;
+                    }else{
+                        return { ...item , count: item.count-1}
+                    }
+                }else{
+                    return item;
+                }
+            })
+
+            this.setState({
+                menu
+            });
+        }
+
+        render(){
+            return(
+                <div>
+                    <Menu menu={ this.state.menu } addItem={ this.addItem } cutItem={ this.cutItem }/>
+                    <div>======================================我是分割线=====================================</div>
+                    <Cart menu={ this.state.menu }/>
+                </div>
+            )
+        }
+    }
+
+    class Menu extends React.Component{
+        constructor(){
+            super();
+        }
+
+        renderMenu=()=>{
+            return this.props.menu.map((item)=>{
+                return(
+                    <div className="list" key={ item.id }>
+                        <div className="left">{ item.name }</div>
+                        <div className="right">
+                            <div className="price">￥: {item.price}</div>
+                            <div className="count-box">
+                                <button className="decBtn" onClick={ () => { this.props.cutItem(item.id) }}>-</button>
+                                <div className="count">{item.count}</div>
+                                <button className="incBtn" onClick={ () => { this.props.addItem(item.id) }}>+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                )
+            })
+        }
+
+        render(){
+            return(
+                <div>
+                    { this.renderMenu() }
+                </div>
+            )
+        }
+    }
+
+    class Cart extends React.Component{
+        constructor(){
+            super();
+        }
+
+        renderCart=()=>{
+            return this.props.menu.map((item)=>{
+                return(
+                    
+                    <div className="list" key={ item.id }>
+                        <div className="left">{item.name}</div>
+                        <div className="right">
+                            <div className="price">￥: {item.price}</div>
+                            <div className="count-box">
+                                <button className="decBtn">-</button>
+                                <div className="count">{item.count}</div>
+                                <button className="incBtn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            })
+        }
+
+        allPrice=()=>{
+            let num=0;
+            this.props.menu.forEach((item)=>{
+                num+=item.count*item.price;
+            })
+            return num;
+        }
+
+        render(){
+            return(
+                <div>
+                    { this.renderCart() }
+                    <div>总价格：{ this.allPrice() }</div>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <App/>,
+        document.getElementById('example')
+    )
+</script>
+</html>

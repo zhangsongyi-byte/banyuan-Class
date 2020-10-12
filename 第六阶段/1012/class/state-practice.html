@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+</body>
+
+<script type="text/babel">
+    class App extends React.Component{
+        constructor(){
+            super()
+
+            this.state={
+                name:'isen',
+                flag:true
+            }
+        }
+
+        click=()=>{
+            this.setState({
+                flag:!this.state.flag
+            })
+        }
+
+        render(){
+            return(
+                <div>
+                    <button onClick={ this.click }>click</button>
+                    { this.state.flag ? <Child></Child> : null }
+                </div>
+            )
+        }
+    }
+
+    class Child extends React.Component{
+        constructor(){
+            super()
+        }
+
+        render(){
+            return(
+                <div>
+                    <div>123</div>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <App/>,
+        document.getElementById('example')
+    )
+</script>
+</html>

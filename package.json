@@ -21,5 +21,8 @@
         "babel-cli": "^6.26.0",
         "babel-preset-es2015": "^6.24.1",
         "lodash": "^4.17.20"
+    },
+    "devDependencies": {
+        "webpack-cli": "^3.3.12"
     }
 }
