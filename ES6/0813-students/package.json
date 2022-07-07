@@ -21,7 +21,7 @@
         "koa-views": "^6.0.2",
         "koa2-cors": "^2.0.6",
         "lodash": "^4.17.20",
-        "moment": "^2.27.0",
+        "moment": "^2.29.4",
         "nunjucks": "~3.0.0"
     },
     "devDependencies": {
